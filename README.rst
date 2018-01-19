@@ -3,9 +3,17 @@ Namespaced OpenPyXL2.5
 
 This branch changes the namespace of openpyxl to allow for incremental upgrades of applications using the library.
 
-Remote Origin is :code:`git remote add hg-origin hg::https://bitbucket.org/openpyxl/openpyxl` :code:`git remote add hg-origin hg::https://bitbucket.org/openpyxl/openpyxl`
+Remote Origin
+    - :code:`git remote add hg-origin hg::https://bitbucket.org/openpyxl/openpyxl` 
 
-OpenPyXL's Main Repo is mercurial. A special plugin is needed to update from upstream :code:`brew install git-remote-hg`
+OpenPyXL's Main Repo is mercurial. A special plugin is needed to update from upstream
+    - :code:`brew install git-remote-hg`
+
+To Update:
+    - :code:`git fetch`
+    - :code:`git pull hg-origin master`
+    - :code:`git gc --aggressive`
+    - :code:`git push`
 
 
 openpyxl

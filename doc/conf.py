@@ -27,18 +27,18 @@ import openpyxl
 def AliasProxyGet(self, instance, cls):
     return getattr(cls, self.alias)
 
-from openpyxl.styles.numbers import NumberFormatDescriptor
+from openpyxl25.styles.numbers import NumberFormatDescriptor
 
 def NumberFormatGet(self, instance, cls):
     return self
 
-from openpyxl.styles.styleable import StyleDescriptor
+from openpyxl25.styles.styleable import StyleDescriptor
 
 def StyleDescriptorGet(self, instance, cls):
     return self.key
 
 if os.environ.get("APIDOC") == "True":
-    from openpyxl.descriptors import Alias
+    from openpyxl25.descriptors import Alias
     Alias.__get__ = AliasProxyGet
     NumberFormatDescriptor.__get__ = NumberFormatGet
 
@@ -67,14 +67,14 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'openpyxl'
-copyright = u'2010 - 2014, %s' % openpyxl.__author__
+copyright = u'2010 - 2014, %s' % openpyxl25.__author__
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The full version, including alpha/beta/rc tags.
-release = openpyxl.__version__
+release = openpyxl25.__version__
 # The short X.Y version.
 version = ".".join(release.split(".")[:-1])
 
@@ -209,8 +209,8 @@ htmlhelp_basename = 'openpyxldoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'openpyxl.tex', u'openpyxl Documentation',
-   openpyxl.__author__, 'manual'),
+  ('index', 'openpyxl25.tex', u'openpyxl Documentation',
+   openpyxl25.__author__, 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -243,7 +243,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'openpyxl', u'openpyxl Documentation',
-     [openpyxl.__author__], 1)
+     [openpyxl25.__author__], 1)
 ]
 
 

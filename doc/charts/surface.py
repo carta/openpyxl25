@@ -1,11 +1,11 @@
-from openpyxl import Workbook
-from openpyxl.chart import (
+from openpyxl25 import Workbook
+from openpyxl25.chart import (
     SurfaceChart,
     SurfaceChart3D,
     Reference,
     Series,
 )
-from openpyxl.chart.axis import SeriesAxis
+from openpyxl25.chart.axis import SeriesAxis
 
 wb = Workbook()
 ws = wb.active

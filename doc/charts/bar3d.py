@@ -1,5 +1,5 @@
-from openpyxl import Workbook
-from openpyxl.chart import (
+from openpyxl25 import Workbook
+from openpyxl25.chart import (
     Reference,
     Series,
     BarChart3D,

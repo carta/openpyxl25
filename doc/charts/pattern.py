@@ -1,8 +1,8 @@
-from openpyxl import Workbook
-from openpyxl.chart import BarChart, Reference
-from openpyxl.chart.marker import DataPoint
+from openpyxl25 import Workbook
+from openpyxl25.chart import BarChart, Reference
+from openpyxl25.chart.marker import DataPoint
 
-from openpyxl.drawing.fill import PatternFillProperties, ColorChoice
+from openpyxl25.drawing.fill import PatternFillProperties, ColorChoice
 
 wb = Workbook()
 ws = wb.active

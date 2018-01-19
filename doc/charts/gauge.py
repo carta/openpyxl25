@@ -1,7 +1,7 @@
-from openpyxl import Workbook
+from openpyxl25 import Workbook
 
-from openpyxl.chart import PieChart, DoughnutChart, Series, Reference
-from openpyxl.chart.series import DataPoint
+from openpyxl25.chart import PieChart, DoughnutChart, Series, Reference
+from openpyxl25.chart.series import DataPoint
 
 
 data = [

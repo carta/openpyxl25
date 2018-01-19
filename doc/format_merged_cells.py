@@ -1,5 +1,5 @@
-from openpyxl.styles import Border, Side, PatternFill, Font, GradientFill, Alignment
-from openpyxl import Workbook
+from openpyxl25.styles import Border, Side, PatternFill, Font, GradientFill, Alignment
+from openpyxl25 import Workbook
 
 
 def style_range(ws, cell_range, border=Border(), fill=None, font=None, alignment=None):

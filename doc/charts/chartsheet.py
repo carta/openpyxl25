@@ -1,6 +1,6 @@
-from openpyxl import Workbook
+from openpyxl25 import Workbook
 
-from openpyxl.chart import PieChart, Reference, Series
+from openpyxl25.chart import PieChart, Reference, Series
 
 wb = Workbook()
 ws = wb.active

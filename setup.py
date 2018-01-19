@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Setup script for packaging openpyxl.
+"""Setup script for packaging openpyxl25.
 
 To build a package for distribution:
     python setup.py sdist

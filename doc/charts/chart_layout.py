@@ -1,6 +1,6 @@
-from openpyxl import Workbook, load_workbook
-from openpyxl.chart import ScatterChart, Series, Reference
-from openpyxl.chart.layout import Layout, ManualLayout
+from openpyxl25 import Workbook, load_workbook
+from openpyxl25.chart import ScatterChart, Series, Reference
+from openpyxl25.chart.layout import Layout, ManualLayout
 
 wb = Workbook()
 ws = wb.active

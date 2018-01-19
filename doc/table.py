@@ -1,5 +1,5 @@
-from openpyxl import Workbook
-from openpyxl.worksheet.table import Table, TableStyleInfo
+from openpyxl25 import Workbook
+from openpyxl25.worksheet.table import Table, TableStyleInfo
 
 wb = Workbook()
 ws = wb.active

@@ -1,3 +1,11 @@
+Namespaced OpenPyXL2.5
+
+Remote Origin is `git remote add hg-origin hg::https://bitbucket.org/openpyxl/openpyxl`
+
+OpenPyXL's Main Repo is mercurial. A special plugin is needed to update from upstream `brew install git-remote-hg`
+
+
+
 openpyxl
 ========
 

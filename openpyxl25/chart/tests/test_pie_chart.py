@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def PieChart():
-    from ..pie_chart import PieChart
+    from openpyxl25.chart.pie_chart import PieChart
     return PieChart
 
 
@@ -44,7 +44,7 @@ class TestPieChart:
 
 @pytest.fixture
 def PieChart3D():
-    from ..pie_chart import PieChart3D
+    from openpyxl25.chart.pie_chart import PieChart3D
     return PieChart3D
 
 
@@ -64,7 +64,7 @@ class TestPieChart3D:
 
 @pytest.fixture
 def DoughnutChart():
-    from ..pie_chart import DoughnutChart
+    from openpyxl25.chart.pie_chart import DoughnutChart
     return DoughnutChart
 
 
@@ -100,7 +100,7 @@ class TestDoughnutChart:
 
 @pytest.fixture
 def ProjectedPieChart():
-    from ..pie_chart import ProjectedPieChart
+    from openpyxl25.chart.pie_chart import ProjectedPieChart
     return ProjectedPieChart
 
 
@@ -151,7 +151,7 @@ class TestProjectedPieChart:
 
 @pytest.fixture
 def CustomSplit():
-    from ..pie_chart import CustomSplit
+    from openpyxl25.chart.pie_chart import CustomSplit
     return CustomSplit
 
 

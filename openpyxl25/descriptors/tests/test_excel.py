@@ -3,12 +3,12 @@ from __future__ import absolute_import
 
 import pytest
 
-from .. import Strict
+from openpyxl25.descriptors import Strict
 
 
 @pytest.fixture
 def UniversalMeasure():
-    from ..excel import UniversalMeasure
+    from openpyxl25.descriptors.excel import UniversalMeasure
 
     class Dummy(Strict):
 
@@ -36,7 +36,7 @@ class TestUniversalMeasure:
 
 @pytest.fixture
 def HexBinary():
-    from ..excel import HexBinary
+    from openpyxl25.descriptors.excel import HexBinary
 
     class Dummy(Strict):
 
@@ -65,7 +65,7 @@ class TestHexBinary:
 
 @pytest.fixture
 def TextPoint():
-    from ..excel import TextPoint
+    from openpyxl25.descriptors.excel import TextPoint
 
     class Dummy(Strict):
 
@@ -94,7 +94,7 @@ class TestTextPoint:
 
 @pytest.fixture
 def Percentage():
-    from ..excel import Percentage
+    from openpyxl25.descriptors.excel import Percentage
 
     class Dummy(Strict):
 
@@ -122,7 +122,7 @@ class TestPercentage:
 
 @pytest.fixture
 def Guid():
-    from ..excel import Guid
+    from openpyxl25.descriptors.excel import Guid
 
     class Dummy(Strict):
         value = Guid()
@@ -148,7 +148,7 @@ class TestGuid():
 
 @pytest.fixture
 def Base64Binary():
-    from ..excel import Base64Binary
+    from openpyxl25.descriptors.excel import Base64Binary
 
     class Dummy(Strict):
         value = Base64Binary()
@@ -174,7 +174,7 @@ class TestBase64Binary():
 
 @pytest.fixture
 def CellRange():
-    from ..excel import CellRange
+    from openpyxl25.descriptors.excel import CellRange
 
     class Dummy(Strict):
         value = CellRange()

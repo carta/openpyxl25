@@ -7,7 +7,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def WorkbookProtection():
-    from ..protection import WorkbookProtection
+    from openpyxl25.workbook.protection import WorkbookProtection
     return WorkbookProtection
 
 
@@ -55,7 +55,7 @@ class TestWorkbookProtection:
 
 @pytest.fixture
 def FileSharing():
-    from ..protection import FileSharing
+    from openpyxl25.workbook.protection import FileSharing
     return FileSharing
 
 

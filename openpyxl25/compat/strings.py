@@ -6,7 +6,7 @@ import sys
 
 VER = sys.version_info
 
-from .numbers import NUMERIC_TYPES
+from openpyxl25.compat.numbers import NUMERIC_TYPES
 
 if VER[0] >= 3:
     basestring = str

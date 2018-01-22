@@ -6,13 +6,13 @@ import pytest
 from openpyxl25.xml.functions import tostring, fromstring
 
 from openpyxl25.tests.helper import compare_xml
-from ..colors import Color
-from .. import colors
+from openpyxl25.styles.colors import Color
+from openpyxl25.styles import colors
 
 
 @pytest.fixture
 def Font():
-    from ..fonts import Font
+    from openpyxl25.styles.fonts import Font
     return Font
 
 
@@ -32,7 +32,7 @@ class TestFont:
 
 
     def test_serialise(self):
-        from ..fonts import DEFAULT_FONT
+        from openpyxl25.styles.fonts import DEFAULT_FONT
         ft = DEFAULT_FONT
         xml = tostring(ft.to_tree())
         expected = """

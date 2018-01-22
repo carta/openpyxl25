@@ -2,7 +2,7 @@ from __future__ import absolute_import
 # Copyright (c) 2010-2017 openpyxl
 
 
-from .strings import (
+from openpyxl25.compat.strings import (
     basestring,
     unicode,
     bytes,
@@ -11,7 +11,7 @@ from .strings import (
     safe_string,
     safe_repr,
     )
-from .numbers import long, NUMERIC_TYPES
+from openpyxl25.compat.numbers import long, NUMERIC_TYPES
 
 # Python 2.6
 try:

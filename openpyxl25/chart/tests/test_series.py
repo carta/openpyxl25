@@ -10,7 +10,7 @@ from openpyxl25.tests.helper import compare_xml
 class TestBarSer:
 
     def test_from_tree(self):
-        from ..series import Series, attribute_mapping
+        from openpyxl25.chart.series import Series, attribute_mapping
 
         src = """
         <ser>
@@ -43,7 +43,7 @@ class TestBarSer:
 class TestAreaSer:
 
     def test_from_tree(self):
-        from ..series import Series, attribute_mapping
+        from openpyxl25.chart.series import Series, attribute_mapping
 
         src = """
         <ser>
@@ -76,7 +76,7 @@ class TestAreaSer:
 class TestBubbleSer:
 
     def test_from_tree(self):
-        from ..series import Series, attribute_mapping
+        from openpyxl25.chart.series import Series, attribute_mapping
 
         src = """
         <ser>
@@ -159,7 +159,7 @@ class TestBubbleSer:
 class TestPieSer:
 
     def test_from_tree(self):
-        from ..series import Series, attribute_mapping
+        from openpyxl25.chart.series import Series, attribute_mapping
 
         src = """
         <ser>
@@ -194,7 +194,7 @@ class TestPieSer:
 class TestRadarSer:
 
     def test_from_tree(self):
-        from ..series import Series, attribute_mapping
+        from openpyxl25.chart.series import Series, attribute_mapping
 
         src = """
         <ser xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
@@ -235,7 +235,7 @@ class TestRadarSer:
 class TestScatterSer:
 
     def test_from_tree(self):
-        from ..series import Series, attribute_mapping
+        from openpyxl25.chart.series import Series, attribute_mapping
 
         src = """
         <ser xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
@@ -283,7 +283,7 @@ class TestScatterSer:
 class TestSurfaceSer:
 
     def test_from_tree(self):
-        from ..series import Series, attribute_mapping
+        from openpyxl25.chart.series import Series, attribute_mapping
 
         src = """
         <ser xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
@@ -315,7 +315,7 @@ class TestSurfaceSer:
 
 @pytest.fixture
 def SeriesLabel():
-    from ..series import SeriesLabel
+    from openpyxl25.chart.series import SeriesLabel
     return SeriesLabel
 
 

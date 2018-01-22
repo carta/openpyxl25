@@ -9,7 +9,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def PrintSettings():
-    from ..print_settings import PrintSettings
+    from openpyxl25.chart.print_settings import PrintSettings
     return PrintSettings
 
 
@@ -36,7 +36,7 @@ class TestPrintSettings:
 
 @pytest.fixture
 def PageMargins():
-    from ..print_settings import PageMargins
+    from openpyxl25.chart.print_settings import PageMargins
     return PageMargins
 
 

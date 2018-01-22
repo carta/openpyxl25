@@ -4,7 +4,7 @@ import pytest
 
 @pytest.fixture
 def Protection():
-    from .. protection import Protection
+    from openpyxl25.styles.protection import Protection
     return Protection
 
 

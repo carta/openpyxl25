@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 
 def test_split_into_parts():
-    from .. header_footer import _split_string
+    from openpyxl25.worksheet.header_footer import _split_string
 
     headers = _split_string("&Ltest header")
     assert headers['left'] == "test header"
@@ -20,14 +20,14 @@ def test_split_into_parts():
 
 
 def test_cannot_split():
-    from ..header_footer import _split_string
+    from openpyxl25.worksheet.header_footer import _split_string
     s = """\n """
     parts = _split_string(s)
     assert parts == {'left':'', 'right':'', 'center':''}
 
 
 def test_multiline_string():
-    from .. header_footer import _split_string
+    from openpyxl25.worksheet.header_footer import _split_string
 
     s = """&L141023 V1&CRoute - Malls\nSchedules R1201 v R1301&RClient-internal use only"""
     headers = _split_string(s)
@@ -46,7 +46,7 @@ def test_multiline_string():
                          ]
                          )
 def test_parse_format(value, expected):
-    from .. header_footer import FORMAT_REGEX
+    from openpyxl25.worksheet.header_footer import FORMAT_REGEX
 
     m = FORMAT_REGEX.findall(value)
     assert m == expected
@@ -54,7 +54,7 @@ def test_parse_format(value, expected):
 
 @pytest.fixture
 def _HeaderFooterPart():
-    from ..header_footer import _HeaderFooterPart
+    from openpyxl25.worksheet.header_footer import _HeaderFooterPart
     return _HeaderFooterPart
 
 
@@ -90,7 +90,7 @@ class TestHeaderFooterPart:
 
 @pytest.fixture
 def HeaderFooterItem():
-    from ..header_footer import HeaderFooterItem
+    from openpyxl25.worksheet.header_footer import HeaderFooterItem
     return HeaderFooterItem
 
 
@@ -144,7 +144,7 @@ class TestHeaderFooterItem:
 
 @pytest.fixture
 def HeaderFooter():
-    from ..header_footer import HeaderFooter
+    from openpyxl25.worksheet.header_footer import HeaderFooter
     return HeaderFooter
 
 

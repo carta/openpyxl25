@@ -7,7 +7,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def PivotCache():
-    from ..pivot import PivotCache
+    from openpyxl25.workbook.pivot import PivotCache
     return PivotCache
 
 
@@ -34,7 +34,7 @@ class TestPivotCache:
 
 @pytest.fixture
 def PivotCacheList():
-    from ..pivot import PivotCacheList
+    from openpyxl25.workbook.pivot import PivotCacheList
     return PivotCacheList
 
 

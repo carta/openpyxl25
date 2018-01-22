@@ -11,7 +11,7 @@ import pytest
 
 @pytest.fixture
 def Comment():
-    from ..comments import Comment
+    from openpyxl25.comments import Comment
     return Comment
 
 

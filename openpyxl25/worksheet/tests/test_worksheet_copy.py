@@ -21,7 +21,7 @@ def compare_cells(source_cell, target_cell):
 
 @pytest.fixture
 def WorksheetCopy():
-    from ..copier import WorksheetCopy
+    from openpyxl25.worksheet.copier import WorksheetCopy
 
     return WorksheetCopy
 

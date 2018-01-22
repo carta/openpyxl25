@@ -5,14 +5,14 @@ from openpyxl25.reader.excel import load_workbook
 from openpyxl25.xml.functions import fromstring
 from openpyxl25.workbook import Workbook
 
-from ..comments import Comment
+from openpyxl25.comments import Comment
 
 import pytest
 
 
 def test_read_comments(datadir):
     datadir.chdir()
-    from .. comment_sheet import CommentSheet
+    from openpyxl25.comments.comment_sheet import CommentSheet
 
     with open("comments2.xml") as src:
         node = fromstring(src.read())

@@ -9,7 +9,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def Series():
-    from ..series_factory import SeriesFactory
+    from openpyxl25.chart.series_factory import SeriesFactory
     return SeriesFactory
 
 
@@ -113,7 +113,7 @@ class TestSeriesFactory:
 
 
     def test_xy(self, Series):
-        from ..series import XYSeries
+        from openpyxl25.chart.series import XYSeries
         series = Series("Sheet!A1:A10", xvalues="Sheet!B1:B10")
         assert isinstance(series, XYSeries)
 

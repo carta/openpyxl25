@@ -7,7 +7,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def ExternalReference():
-    from ..external_reference import ExternalReference
+    from openpyxl25.workbook.external_reference import ExternalReference
     return ExternalReference
 
 

@@ -11,7 +11,7 @@ from openpyxl25.xml.functions import fromstring, tostring, xmlfile
 from openpyxl25.reader.excel import load_workbook
 from openpyxl25 import Workbook
 
-from .. worksheet import write_worksheet
+from openpyxl25.writer.worksheet import write_worksheet
 
 from openpyxl25.tests.helper import compare_xml
 from openpyxl25.worksheet.properties import PageSetupProperties
@@ -48,19 +48,19 @@ def ColumnDimension():
 
 @pytest.fixture
 def write_rows():
-    from .. etree_worksheet import write_rows
+    from openpyxl25.writer.etree_worksheet import write_rows
     return write_rows
 
 
 @pytest.fixture
 def etree_write_cell():
-    from ..etree_worksheet import etree_write_cell
+    from openpyxl25.writer.etree_worksheet import etree_write_cell
     return etree_write_cell
 
 
 @pytest.fixture
 def lxml_write_cell():
-    from ..etree_worksheet import lxml_write_cell
+    from openpyxl25.writer.etree_worksheet import lxml_write_cell
     return lxml_write_cell
 
 
@@ -191,7 +191,7 @@ def test_write_height(worksheet, write_rows):
 
 
 def test_get_rows_to_write(worksheet):
-    from .. etree_worksheet import get_rows_to_write
+    from openpyxl25.writer.etree_worksheet import get_rows_to_write
 
     ws = worksheet
     ws['A10'] = "test"
@@ -207,7 +207,7 @@ def test_get_rows_to_write(worksheet):
 
 
 def test_merge(worksheet):
-    from .. worksheet import write_mergecells
+    from openpyxl25.writer.worksheet import write_mergecells
 
     ws = worksheet
     ws.cell('A1').value = 'Cell A1'
@@ -226,14 +226,14 @@ def test_merge(worksheet):
 
 
 def test_no_merge(worksheet):
-    from .. worksheet import write_mergecells
+    from openpyxl25.writer.worksheet import write_mergecells
 
     merge = write_mergecells(worksheet)
     assert merge is None
 
 
 def test_external_hyperlink(worksheet):
-    from .. worksheet import write_hyperlinks
+    from openpyxl25.writer.worksheet import write_hyperlinks
 
     ws = worksheet
     cell = ws['A1']
@@ -255,7 +255,7 @@ def test_external_hyperlink(worksheet):
 
 
 def test_internal_hyperlink(worksheet):
-    from .. worksheet import write_hyperlinks
+    from openpyxl25.writer.worksheet import write_hyperlinks
     from openpyxl25.worksheet.hyperlink import Hyperlink
 
     ws = worksheet
@@ -298,7 +298,7 @@ def worksheet_with_cf(worksheet):
 
 @pytest.fixture
 def write_conditional_formatting():
-    from .. worksheet import write_conditional_formatting
+    from openpyxl25.writer.worksheet import write_conditional_formatting
     return write_conditional_formatting
 
 
@@ -384,7 +384,7 @@ def test_formula_rule(worksheet_with_cf, write_conditional_formatting):
 
 @pytest.fixture
 def write_worksheet():
-    from .. worksheet import write_worksheet
+    from openpyxl25.writer.worksheet import write_worksheet
     return write_worksheet
 
 
@@ -478,7 +478,7 @@ def test_write_comments(worksheet, write_worksheet):
 
 
 def test_write_drawing(worksheet):
-    from ..worksheet import write_drawing
+    from openpyxl25.writer.worksheet import write_drawing
     worksheet._images = [1]
     expected = """
     <drawing xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" r:id="rId1"/>

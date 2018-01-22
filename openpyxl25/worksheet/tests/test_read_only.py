@@ -15,7 +15,7 @@ class DummyWorkbook:
 
 @pytest.fixture
 def ReadOnlyWorksheet():
-    from ..read_only import ReadOnlyWorksheet
+    from openpyxl25.worksheet.read_only import ReadOnlyWorksheet
     return ReadOnlyWorksheet
 
 

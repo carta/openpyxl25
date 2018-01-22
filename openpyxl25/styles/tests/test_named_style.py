@@ -5,12 +5,12 @@ import pytest
 
 from array import array
 
-from ..fonts import Font
-from ..borders import Border
-from ..fills import PatternFill
-from ..alignment import Alignment
-from ..protection import Protection
-from ..cell_style import CellStyle, StyleArray
+from openpyxl25.styles.fonts import Font
+from openpyxl25.styles.borders import Border
+from openpyxl25.styles.fills import PatternFill
+from openpyxl25.styles.alignment import Alignment
+from openpyxl25.styles.protection import Protection
+from openpyxl25.styles.cell_style import CellStyle, StyleArray
 
 from openpyxl25 import Workbook
 
@@ -20,7 +20,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def NamedStyle():
-    from ..named_styles import NamedStyle
+    from openpyxl25.styles.named_styles import NamedStyle
     return NamedStyle
 
 
@@ -104,7 +104,7 @@ class TestNamedStyle:
 
 @pytest.fixture
 def _NamedCellStyle():
-    from ..named_styles import _NamedCellStyle
+    from openpyxl25.styles.named_styles import _NamedCellStyle
     return _NamedCellStyle
 
 
@@ -136,7 +136,7 @@ class TestNamedCellStyle:
 
 @pytest.fixture
 def _NamedCellStyleList():
-    from ..named_styles import _NamedCellStyleList
+    from openpyxl25.styles.named_styles import _NamedCellStyleList
     return _NamedCellStyleList
 
 
@@ -184,7 +184,7 @@ class TestNamedCellStyleList:
 
 @pytest.fixture
 def NamedStyleList():
-    from ..named_styles import NamedStyleList
+    from openpyxl25.styles.named_styles import NamedStyleList
     return NamedStyleList
 
 

@@ -7,7 +7,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def WorkbookProperties():
-    from ..properties import WorkbookProperties
+    from openpyxl25.workbook.properties import WorkbookProperties
     return WorkbookProperties
 
 
@@ -34,7 +34,7 @@ class TestWorkbookProperties:
 
 @pytest.fixture
 def CalcProperties():
-    from ..properties import CalcProperties
+    from openpyxl25.workbook.properties import CalcProperties
     return CalcProperties
 
 
@@ -61,7 +61,7 @@ class TestCalcProperties:
 
 @pytest.fixture
 def FileVersion():
-    from ..properties import FileVersion
+    from openpyxl25.workbook.properties import FileVersion
     return FileVersion
 
 

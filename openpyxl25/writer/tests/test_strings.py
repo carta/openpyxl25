@@ -5,7 +5,7 @@ from openpyxl25.tests.helper import compare_xml
 
 
 def test_write_string_table(datadir):
-    from ..strings import write_string_table
+    from openpyxl25.writer.strings import write_string_table
 
     datadir.chdir()
     table = ['This is cell A1 in Sheet 1', 'This is cell G5']
@@ -17,7 +17,7 @@ def test_write_string_table(datadir):
 
 
 def test_preseve_space():
-    from ..strings import write_string_table
+    from openpyxl25.writer.strings import write_string_table
     table = ['String with trailing space   ']
     content = write_string_table(table)
     expected = """

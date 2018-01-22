@@ -15,7 +15,7 @@ from openpyxl25.xml.functions import tostring, fromstring
 
 @pytest.fixture
 def ExternalCell():
-    from ..external import ExternalCell
+    from openpyxl25.workbook.external_link.external import ExternalCell
     return ExternalCell
 
 
@@ -35,7 +35,7 @@ class TestExternalCell:
 
 @pytest.fixture
 def ExternalLink():
-    from .. external import ExternalLink
+    from openpyxl25.workbook.external_link.external import ExternalLink
     return ExternalLink
 
 
@@ -75,7 +75,7 @@ class TestExternalLink:
 
 @pytest.fixture
 def ExternalBook():
-    from .. external import ExternalBook
+    from openpyxl25.workbook.external_link.external import ExternalBook
     return ExternalBook
 
 
@@ -83,7 +83,7 @@ class TestExternalBook:
 
 
     def test_ctor(self, ExternalBook):
-        from ..external import ExternalDefinedName, ExternalSheetNames
+        from openpyxl25.workbook.external_link.external import ExternalDefinedName, ExternalSheetNames
         book = ExternalBook()
         book.sheetNames = ExternalSheetNames(sheetName=["Sheet1", "Sheet2", "Sheet3"])
         df = ExternalDefinedName(name="B2range", refersTo="='Sheet1'!$A$1:$A$10")
@@ -135,7 +135,7 @@ def test_read_ole_link(datadir, ExternalLink):
 
 def test_read_external_link(datadir):
     from openpyxl25.packaging.relationship import get_dependents
-    from .. external import read_external_link
+    from openpyxl25.workbook.external_link.external import read_external_link
     datadir.chdir()
     archive = ZipFile("book1.xlsx")
     rels = get_dependents(archive, ARC_WORKBOOK_RELS)

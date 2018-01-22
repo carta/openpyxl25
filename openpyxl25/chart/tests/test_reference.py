@@ -9,7 +9,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def Reference():
-    from ..reference import Reference
+    from openpyxl25.chart.reference import Reference
     return Reference
 
 

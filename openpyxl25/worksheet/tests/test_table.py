@@ -11,7 +11,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def TableColumn():
-    from ..table import TableColumn
+    from openpyxl25.worksheet.table import TableColumn
     return TableColumn
 
 
@@ -38,7 +38,7 @@ class TestTableColumn:
 
 @pytest.fixture
 def Table():
-    from ..table import Table
+    from openpyxl25.worksheet.table import Table
     return Table
 
 
@@ -104,7 +104,7 @@ class TestTable:
 
 @pytest.fixture
 def TableFormula():
-    from ..table import TableFormula
+    from openpyxl25.worksheet.table import TableFormula
     return TableFormula
 
 
@@ -132,7 +132,7 @@ class TestTableFormula:
 
 @pytest.fixture
 def TableStyleInfo():
-    from ..table import TableStyleInfo
+    from openpyxl25.worksheet.table import TableStyleInfo
     return TableStyleInfo
 
 
@@ -159,7 +159,7 @@ class TestTableInfo:
 
 @pytest.fixture
 def XMLColumnProps():
-    from ..table import XMLColumnProps
+    from openpyxl25.worksheet.table import XMLColumnProps
     return XMLColumnProps
 
 
@@ -187,10 +187,10 @@ class TestXMLColumnPr:
 
 @pytest.fixture
 def TablePartList():
-    from ..table import TablePartList
+    from openpyxl25.worksheet.table import TablePartList
     return TablePartList
 
-from ..related import Related
+from openpyxl25.worksheet.related import Related
 
 
 class TestTablePartList:

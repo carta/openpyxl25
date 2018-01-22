@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 # Copyright (c) 2010-2017 openpyxl
 
-from .. protection import hash_password
+from openpyxl25.utils.protection import hash_password
 
 
 def test_password():

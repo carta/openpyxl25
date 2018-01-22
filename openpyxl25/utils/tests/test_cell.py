@@ -3,7 +3,7 @@ from __future__ import absolute_import
 
 import pytest
 
-from .. import (
+from openpyxl25.utils import (
     column_index_from_string,
     coordinate_from_string,
     get_column_letter,
@@ -18,7 +18,7 @@ def test_coordinates():
 
 @pytest.mark.parametrize("value", ['AAA', "AQ0"])
 def test_invalid_coordinate(value):
-    from ..exceptions import CellCoordinatesException
+    from openpyxl25.utils.exceptions import CellCoordinatesException
     with pytest.raises(CellCoordinatesException):
         coordinate_from_string(value)
 
@@ -94,7 +94,7 @@ def test_column_letter(value, expected):
 
 
 def test_coordinate_tuple():
-    from .. import coordinate_to_tuple
+    from openpyxl25.utils import coordinate_to_tuple
     assert coordinate_to_tuple("D15") == (15, 4)
 
 
@@ -106,12 +106,12 @@ def test_coordinate_tuple():
                          ]
                          )
 def test_range_to_tuple(range_string, sheetname, boundaries):
-    from .. import range_to_tuple
+    from openpyxl25.utils import range_to_tuple
     assert range_to_tuple(range_string) == (sheetname, boundaries)
 
 
 def test_invalid_range():
-    from .. import range_to_tuple
+    from openpyxl25.utils import range_to_tuple
     with pytest.raises(ValueError):
         range_to_tuple("A1:E5")
 
@@ -125,12 +125,12 @@ def test_invalid_range():
                          ]
                          )
 def test_quote_sheetname(title, quoted):
-    from .. import quote_sheetname
+    from openpyxl25.utils import quote_sheetname
     assert quote_sheetname(title) == quoted
 
 
 def test_rows_from_range():
-    from .. import rows_from_range
+    from openpyxl25.utils import rows_from_range
     cells = rows_from_range("A1:D4")
     cells = [list(row) for row in cells]
     assert cells == [
@@ -142,7 +142,7 @@ def test_rows_from_range():
 
 
 def test_cols_from_range():
-    from .. import cols_from_range
+    from openpyxl25.utils import cols_from_range
     cells = cols_from_range("A1:D4")
     cells = [list(row) for row in cells]
     assert cells == [
@@ -163,11 +163,11 @@ def test_cols_from_range():
                              ('1', (None, 1, None, 1)),
                          ])
 def test_bounds(range_string, coords):
-    from ..cell import range_boundaries
+    from openpyxl25.utils.cell import range_boundaries
     assert range_boundaries(range_string) == coords
 
 
 def test_invalid_bounds():
-    from ..cell import range_boundaries
+    from openpyxl25.utils.cell import range_boundaries
     with pytest.raises(ValueError):
         r = range_boundaries(":-1")

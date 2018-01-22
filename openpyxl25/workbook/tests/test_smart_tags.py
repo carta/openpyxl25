@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def SmartTag():
-    from ..smart_tags import SmartTag
+    from openpyxl25.workbook.smart_tags import SmartTag
     return SmartTag
 
 
@@ -35,7 +35,7 @@ class TestSmartTag:
 
 @pytest.fixture
 def SmartTagList():
-    from ..smart_tags import SmartTagList
+    from openpyxl25.workbook.smart_tags import SmartTagList
     return SmartTagList
 
 
@@ -62,7 +62,7 @@ class TestSmartTagList:
 
 @pytest.fixture
 def SmartTagProperties():
-    from ..smart_tags import SmartTagProperties
+    from openpyxl25.workbook.smart_tags import SmartTagProperties
     return SmartTagProperties
 
 

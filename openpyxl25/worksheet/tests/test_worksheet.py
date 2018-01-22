@@ -27,7 +27,7 @@ class DummyWorkbook:
 
 @pytest.fixture
 def Worksheet():
-    from ..worksheet import Worksheet
+    from openpyxl25.worksheet import Worksheet
     return Worksheet
 
 

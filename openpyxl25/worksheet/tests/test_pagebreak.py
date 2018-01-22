@@ -9,13 +9,13 @@ from openpyxl25.xml.functions import tostring
 
 @pytest.fixture
 def Break():
-    from ..pagebreak import Break
+    from openpyxl25.worksheet.pagebreak import Break
     return Break
 
 
 @pytest.fixture
 def PageBreak():
-    from ..pagebreak import PageBreak
+    from openpyxl25.worksheet.pagebreak import PageBreak
     return PageBreak
 
 

@@ -4,23 +4,23 @@ from __future__ import absolute_import
 import pytest
 
 from openpyxl25.utils.indexed_list import IndexedList
-from ..import (
+from openpyxl25.styles import (
     Font,
     Border,
     PatternFill,
     Alignment,
     Protection
 )
-from ..named_styles import (
+from openpyxl25.styles.named_styles import (
     NamedStyleList,
     NamedStyle,
 )
 
 
 def test_descriptor(Worksheet):
-    from ..styleable import StyleDescriptor
-    from ..cell_style import StyleArray
-    from ..fonts import Font
+    from openpyxl25.styles.styleable import StyleDescriptor
+    from openpyxl25.styles.cell_style import StyleArray
+    from openpyxl25.styles.fonts import Font
 
     class Styled(object):
 
@@ -67,7 +67,7 @@ def Worksheet(Workbook):
 
 @pytest.fixture
 def StyleableObject(Worksheet):
-    from .. styleable import StyleableObject
+    from openpyxl25.styles.styleable import StyleableObject
     so = StyleableObject(sheet=Worksheet, style_array=list(range(9)))
     return so
 

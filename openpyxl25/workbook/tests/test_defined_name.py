@@ -7,7 +7,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def DefinedName():
-    from ..defined_name import DefinedName
+    from openpyxl25.workbook.defined_name import DefinedName
     return DefinedName
 
 
@@ -25,7 +25,7 @@ def DefinedName():
                          ]
                          )
 def test_reserved(value, reserved):
-    from ..defined_name import RESERVED_REGEX
+    from openpyxl25.workbook.defined_name import RESERVED_REGEX
     match = RESERVED_REGEX.match(value) is not None
     assert match == reserved
 
@@ -37,7 +37,7 @@ def test_reserved(value, reserved):
                          ]
                          )
 def test_print_rows(value, expected):
-    from ..defined_name import COL_RANGE_RE
+    from openpyxl25.workbook.defined_name import COL_RANGE_RE
     match = COL_RANGE_RE.match(value)
     assert match.group("cols") == expected
 
@@ -49,7 +49,7 @@ def test_print_rows(value, expected):
                          ]
                          )
 def test_print_cols(value, expected):
-    from ..defined_name import ROW_RANGE_RE
+    from openpyxl25.workbook.defined_name import ROW_RANGE_RE
     match = ROW_RANGE_RE.match(value)
     assert match.group("rows") == expected
 
@@ -71,7 +71,7 @@ def test_print_cols(value, expected):
                          ]
                          )
 def test_print_titles(value, expected):
-    from ..defined_name import TITLES_REGEX
+    from openpyxl25.workbook.defined_name import TITLES_REGEX
 
     scanner = TITLES_REGEX.finditer(value)
     kw = dict((k, v) for match in scanner
@@ -91,7 +91,7 @@ def test_print_titles(value, expected):
                          ]
                          )
 def test_unpack_print_titles(DefinedName, value, expected):
-    from ..defined_name import _unpack_print_titles
+    from openpyxl25.workbook.defined_name import _unpack_print_titles
     defn = DefinedName(name="Print_Titles")
     defn.value = value
     assert _unpack_print_titles(defn) == expected
@@ -108,7 +108,7 @@ def test_unpack_print_titles(DefinedName, value, expected):
                          ]
                          )
 def test_unpack_print_area(DefinedName, value, expected):
-    from ..defined_name import _unpack_print_area
+    from openpyxl25.workbook.defined_name import _unpack_print_area
     defn = DefinedName(name="Print_Area")
     defn.value = value
     assert _unpack_print_area(defn) == expected
@@ -251,7 +251,7 @@ class TestDefinition:
 
 @pytest.fixture
 def DefinedNameList():
-    from ..defined_name import DefinedNameList
+    from openpyxl25.workbook.defined_name import DefinedNameList
     return DefinedNameList
 
 

@@ -9,7 +9,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def NonVisualGraphicFrameProperties():
-    from ..graphic import NonVisualGraphicFrameProperties
+    from openpyxl25.drawing.graphic import NonVisualGraphicFrameProperties
     return NonVisualGraphicFrameProperties
 
 
@@ -36,7 +36,7 @@ class TestNonVisualGraphicFrameProperties:
 
 @pytest.fixture
 def NonVisualDrawingProps():
-    from ..graphic import NonVisualDrawingProps
+    from openpyxl25.drawing.graphic import NonVisualDrawingProps
     return NonVisualDrawingProps
 
 
@@ -63,7 +63,7 @@ class TestNonVisualDrawingProps:
 
 @pytest.fixture
 def NonVisualGraphicFrame():
-    from ..graphic import NonVisualGraphicFrame
+    from openpyxl25.drawing.graphic import NonVisualGraphicFrame
     return NonVisualGraphicFrame
 
 
@@ -96,7 +96,7 @@ class TestNonVisualGraphicFrame:
 
 @pytest.fixture
 def GraphicData():
-    from ..graphic import GraphicData
+    from openpyxl25.drawing.graphic import GraphicData
     return GraphicData
 
 
@@ -123,7 +123,7 @@ class TestGraphicData:
 
 @pytest.fixture
 def GraphicObject():
-    from ..graphic import GraphicObject
+    from openpyxl25.drawing.graphic import GraphicObject
     return GraphicObject
 
 
@@ -153,7 +153,7 @@ class TestGraphicObject:
 
 @pytest.fixture
 def GraphicFrame():
-    from ..graphic import GraphicFrame
+    from openpyxl25.drawing.graphic import GraphicFrame
     return GraphicFrame
 
 
@@ -198,7 +198,7 @@ class TestGraphicFrame:
 
 @pytest.fixture
 def ChartRelation():
-    from ..graphic import ChartRelation
+    from openpyxl25.drawing.graphic import ChartRelation
     return ChartRelation
 
 
@@ -225,7 +225,7 @@ class TestChartRelation:
 
 @pytest.fixture
 def PictureLocking():
-    from ..graphic import PictureLocking
+    from openpyxl25.drawing.graphic import PictureLocking
     return PictureLocking
 
 
@@ -252,7 +252,7 @@ class TestPictureLocking:
 
 @pytest.fixture
 def NonVisualPictureProperties():
-    from ..graphic import NonVisualPictureProperties
+    from openpyxl25.drawing.graphic import NonVisualPictureProperties
     return NonVisualPictureProperties
 
 
@@ -279,7 +279,7 @@ class TestNonVisualPictureProperties:
 
 @pytest.fixture
 def PictureNonVisual():
-    from ..graphic import PictureNonVisual
+    from openpyxl25.drawing.graphic import PictureNonVisual
     return PictureNonVisual
 
 
@@ -312,7 +312,7 @@ class TestPictureNonVisual:
 
 @pytest.fixture
 def PictureFrame():
-    from ..graphic import PictureFrame
+    from openpyxl25.drawing.graphic import PictureFrame
     return PictureFrame
 
 

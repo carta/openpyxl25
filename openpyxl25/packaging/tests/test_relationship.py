@@ -10,7 +10,7 @@ from openpyxl25.xml.functions import tostring, fromstring
 
 @pytest.fixture
 def Relationship():
-    from ..relationship import Relationship
+    from openpyxl25.packaging.relationship import Relationship
     return Relationship
 
 
@@ -31,7 +31,7 @@ def test_ctor(Relationship):
 
 
 def test_sequence(Relationship):
-    from ..relationship import RelationshipList
+    from openpyxl25.packaging.relationship import RelationshipList
     rels = RelationshipList()
     rels.append(Relationship(type="drawing", Target="drawings.xml",
                              TargetMode="external", Id=""))
@@ -49,7 +49,7 @@ def test_sequence(Relationship):
 
 
 def test_read():
-    from ..relationship import RelationshipList
+    from openpyxl25.packaging.relationship import RelationshipList
     xml = """
     <Relationships>
       <Relationship Id="rId3"
@@ -96,7 +96,7 @@ def test_get_dependents(datadir, filename, expected):
     datadir.chdir()
     archive = ZipFile("bug137.xlsx")
 
-    from ..relationship import get_dependents
+    from openpyxl25.packaging.relationship import get_dependents
     rels = get_dependents(archive, filename)
     assert [r.Target for r in rels.Relationship] == expected
 
@@ -105,7 +105,7 @@ def test_get_external_link(datadir):
     datadir.chdir()
     archive = ZipFile("hyperlink.xlsx")
 
-    from ..relationship import get_dependents
+    from openpyxl25.packaging.relationship import get_dependents
     rels = get_dependents(archive, "xl/worksheets/_rels/sheet1.xml.rels")
 
     assert [r.Target for r in rels.Relationship] == ["http://www.readthedocs.org"]

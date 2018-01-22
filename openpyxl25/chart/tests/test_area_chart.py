@@ -5,12 +5,12 @@ import pytest
 
 from openpyxl25.xml.functions import fromstring, tostring
 from openpyxl25.tests.helper import compare_xml
-from .. import Series
+from openpyxl25.chart import Series
 
 
 @pytest.fixture
 def AreaChart():
-    from ..area_chart import AreaChart
+    from openpyxl25.chart.area_chart import AreaChart
     return AreaChart
 
 
@@ -118,7 +118,7 @@ class TestAreaChart:
 
 @pytest.fixture
 def AreaChart3D():
-    from ..area_chart import AreaChart3D
+    from openpyxl25.chart.area_chart import AreaChart3D
     return AreaChart3D
 
 

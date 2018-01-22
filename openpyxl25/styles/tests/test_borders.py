@@ -6,19 +6,19 @@ import pytest
 from openpyxl25.xml.functions import tostring, fromstring
 
 from openpyxl25.tests.helper import compare_xml
-from ..colors import Color
-from .. import colors
+from openpyxl25.styles.colors import Color
+from openpyxl25.styles import colors
 
 
 @pytest.fixture
 def Side():
-    from ..borders import Side
+    from openpyxl25.styles.borders import Side
     return Side
 
 
 @pytest.fixture
 def Border():
-    from ..borders import Border
+    from openpyxl25.styles.borders import Border
     return Border
 
 

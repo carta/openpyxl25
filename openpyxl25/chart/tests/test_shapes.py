@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def GraphicalProperties():
-    from ..shapes import GraphicalProperties
+    from openpyxl25.chart.shapes import GraphicalProperties
     return GraphicalProperties
 
 

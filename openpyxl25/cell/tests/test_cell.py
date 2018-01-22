@@ -51,7 +51,7 @@ def DummyWorksheet():
 
 @pytest.fixture
 def Cell():
-    from ..cell import Cell
+    from openpyxl25.cell import Cell
     return Cell
 
 

@@ -8,14 +8,14 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def ExtendedProperties():
-    from ..extended import ExtendedProperties
+    from openpyxl25.packaging.extended import ExtendedProperties
     return ExtendedProperties
 
 
 class TestExtendedProperties:
 
     def test_ctor(self, ExtendedProperties):
-        from ..extended import VERSION
+        from openpyxl25.packaging.extended import VERSION
         props = ExtendedProperties()
         xml = tostring(props.to_tree())
         expected = """

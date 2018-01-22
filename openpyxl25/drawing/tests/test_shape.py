@@ -42,7 +42,7 @@ class DummyChart(object):
 class TestShape(object):
 
     def setup(self):
-        from ..shape import Shape
+        from openpyxl25.drawing.shape import Shape
         self.shape = Shape(chart=DummyChart())
 
     def test_ctor(self):
@@ -92,8 +92,8 @@ class TestShape(object):
 class TestShapeWriter(object):
 
     def setup(self):
-        from ..shape import ShapeWriter
-        from ..shape import Shape
+        from openpyxl25.drawing.shape import ShapeWriter
+        from openpyxl25.drawing.shape import Shape
         chart = DummyChart()
         self.shape = Shape(chart=chart, text="My first chart")
         self.sw = ShapeWriter(shapes=[self.shape])

@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def StockChart():
-    from ..stock_chart import StockChart
+    from openpyxl25.chart.stock_chart import StockChart
     return StockChart
 
 

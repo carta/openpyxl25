@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def ChartContainer():
-    from ..chartspace import ChartContainer
+    from openpyxl25.chart.chartspace import ChartContainer
     return ChartContainer
 
 
@@ -41,7 +41,7 @@ class TestChartContainer:
 
 @pytest.fixture
 def PlotArea():
-    from ..chartspace import PlotArea
+    from openpyxl25.chart.chartspace import PlotArea
     return PlotArea
 
 
@@ -68,7 +68,7 @@ class TestPlotArea:
 
 @pytest.fixture
 def DataTable():
-    from ..chartspace import DataTable
+    from openpyxl25.chart.chartspace import DataTable
     return DataTable
 
 
@@ -95,7 +95,7 @@ class TestDataTable:
 
 @pytest.fixture
 def Surface():
-    from .._3d import Surface
+    from openpyxl25.chart._3d import Surface
     return Surface
 
 
@@ -122,7 +122,7 @@ class TestSurface:
 
 @pytest.fixture
 def View3D():
-    from .._3d import View3D
+    from openpyxl25.chart._3d import View3D
     return View3D
 
 
@@ -158,7 +158,7 @@ class TestView3D:
 
 @pytest.fixture
 def PivotFormat():
-    from ..chartspace import PivotFormat
+    from openpyxl25.chart.chartspace import PivotFormat
     return PivotFormat
 
 
@@ -189,7 +189,7 @@ class TestPivotFormat:
 
 @pytest.fixture
 def PivotFormatList():
-    from ..chartspace import PivotFormatList
+    from openpyxl25.chart.chartspace import PivotFormatList
     return PivotFormatList
 
 
@@ -216,7 +216,7 @@ class TestPivotFormatList:
 
 @pytest.fixture
 def Protection():
-    from ..chartspace import Protection
+    from openpyxl25.chart.chartspace import Protection
     return Protection
 
 
@@ -245,7 +245,7 @@ class TestProtection:
 
 @pytest.fixture
 def PivotSource():
-    from ..chartspace import PivotSource
+    from openpyxl25.chart.chartspace import PivotSource
     return PivotSource
 
 
@@ -278,7 +278,7 @@ class TestPivotSource:
 
 @pytest.fixture
 def ExternalData():
-    from ..chartspace import ExternalData
+    from openpyxl25.chart.chartspace import ExternalData
     return ExternalData
 
 

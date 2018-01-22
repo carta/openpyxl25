@@ -4,7 +4,7 @@ import pytest
 
 @pytest.mark.parametrize("value", ['00FFFFFF', 'efefef'])
 def test_argb(value):
-    from ..colors import aRGB_REGEX
+    from openpyxl25.styles.colors import aRGB_REGEX
     assert aRGB_REGEX.match(value) is not None
 
 
@@ -57,7 +57,7 @@ class TestColor:
 
 
 def test_color_descriptor():
-    from ..colors import ColorDescriptor
+    from openpyxl25.styles.colors import ColorDescriptor
 
     class DummyStyle(object):
 

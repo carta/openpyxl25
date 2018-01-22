@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def WebPublishItem():
-    from ..publish import WebPublishItem
+    from openpyxl25.chartsheet.publish import WebPublishItem
 
     return WebPublishItem
 
@@ -39,7 +39,7 @@ class TestWebPulishItem:
 
 @pytest.fixture
 def WebPublishItems():
-    from ..publish import WebPublishItems
+    from openpyxl25.chartsheet.publish import WebPublishItems
 
     return WebPublishItems
 
@@ -58,7 +58,7 @@ class TestWebPublishItems:
         assert webPublishItems.webPublishItem[0].sourceObject == "Chart 1"
 
     def test_write(self, WebPublishItems):
-        from ..publish import WebPublishItem
+        from openpyxl25.chartsheet.publish import WebPublishItem
 
         webPublish_6433 = WebPublishItem(id=6433, divId="Views_6433", sourceType="chart", sourceRef="",
                                          sourceObject="Chart 1", destinationFile="D:\Publish.mht", title="First Chart",

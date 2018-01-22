@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 
 def test_color_descriptor():
-    from ..colors import ColorChoiceDescriptor
+    from openpyxl25.drawing.colors import ColorChoiceDescriptor
 
     class DummyStyle(object):
 

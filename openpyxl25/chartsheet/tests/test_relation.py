@@ -9,7 +9,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def SheetBackgroundPicture():
-    from ..chartsheet import SheetBackgroundPicture
+    from openpyxl25.chartsheet.relation import SheetBackgroundPicture
 
     return SheetBackgroundPicture
 
@@ -34,7 +34,7 @@ class TestSheetBackgroundPicture:
 
 @pytest.fixture
 def DrawingHF():
-    from ..chartsheet import DrawingHF
+    from openpyxl25.chartsheet.relation import DrawingHF
 
     return DrawingHF
 

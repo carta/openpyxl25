@@ -9,7 +9,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def DataLabelList():
-    from ..label import DataLabelList
+    from openpyxl25.chart.label import DataLabelList
     return DataLabelList
 
 
@@ -51,7 +51,7 @@ class TestDataLabeList:
 
 @pytest.fixture
 def DataLabel():
-    from ..label import DataLabel
+    from openpyxl25.chart.label import DataLabel
     return DataLabel
 
 

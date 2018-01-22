@@ -29,21 +29,21 @@ class DummyWorksheet:
 
 
 def test_dimension_interface():
-    from .. dimensions import Dimension
+    from openpyxl25.worksheet.dimensions import Dimension
     d = Dimension(1, True, 1, False, DummyWorksheet())
     assert isinstance(d.parent, DummyWorksheet)
     assert dict(d) == {'hidden': '1', 'outlineLevel': '1'}
 
 
 def test_invalid_dimension_ctor():
-    from .. dimensions import Dimension
+    from openpyxl25.worksheet.dimensions import Dimension
     with pytest.raises(TypeError):
         Dimension()
 
 
 @pytest.fixture
 def RowDimension():
-    from ..dimensions import RowDimension
+    from openpyxl25.worksheet.dimensions import RowDimension
     return RowDimension
 
 
@@ -64,7 +64,7 @@ class TestRowDimension:
 
 
     def test_row_dimension(self, RowDimension):
-        from ..worksheet import Worksheet
+        from openpyxl25.worksheet.worksheet import Worksheet
         ws = Worksheet(DummyWorkbook())
         row_info = ws.row_dimensions
         assert isinstance(row_info[1], RowDimension)
@@ -79,7 +79,7 @@ class TestRowDimension:
 
 @pytest.fixture
 def ColumnDimension():
-    from ..dimensions import ColumnDimension
+    from openpyxl25.worksheet.dimensions import ColumnDimension
     return ColumnDimension
 
 
@@ -98,7 +98,7 @@ class TestColDimension:
 
 
     def test_column_dimension(self, ColumnDimension):
-        from ..worksheet import Worksheet
+        from openpyxl25.worksheet.worksheet import Worksheet
         ws = Worksheet(DummyWorkbook())
         cols = ws.column_dimensions
         assert isinstance(cols['A'], ColumnDimension)
@@ -122,7 +122,7 @@ class TestColDimension:
 
 
     def test_col_style(self, ColumnDimension):
-        from ..worksheet import Worksheet
+        from openpyxl25.worksheet.worksheet import Worksheet
         from openpyxl25 import Workbook
         from openpyxl25.styles import Font
 
@@ -164,7 +164,7 @@ class TestColDimension:
 class TestGrouping:
 
     def test_group_columns_simple(self):
-        from ..worksheet import Worksheet
+        from openpyxl25.worksheet.worksheet import Worksheet
         ws = Worksheet(DummyWorkbook())
         dims = ws.column_dimensions
         dims.group('A', 'C', 1)
@@ -176,7 +176,7 @@ class TestGrouping:
 
 
     def test_group_columns_collapse(self):
-        from ..worksheet import Worksheet
+        from openpyxl25.worksheet.worksheet import Worksheet
         ws = Worksheet(DummyWorkbook())
         dims = ws.column_dimensions
         dims.group('A', 'C', 1, hidden=True)
@@ -185,7 +185,7 @@ class TestGrouping:
 
 
     def test_no_cols(self):
-        from ..dimensions import DimensionHolder
+        from openpyxl25.worksheet.dimensions import DimensionHolder
         dh = DimensionHolder(None)
         node = dh.to_tree()
         assert node is None

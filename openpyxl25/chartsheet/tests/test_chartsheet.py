@@ -3,7 +3,7 @@ from __future__ import absolute_import
 
 from openpyxl25.worksheet.drawing import Drawing
 from openpyxl25.worksheet.page import PageMargins
-from ..views import ChartsheetView, ChartsheetViewList
+from openpyxl25.chartsheet.views import ChartsheetView, ChartsheetViewList
 
 from openpyxl25.xml.functions import fromstring, tostring
 from openpyxl25.tests.helper import compare_xml
@@ -18,7 +18,7 @@ class DummyWorkbook:
 
 @pytest.fixture
 def Chartsheet():
-    from ..chartsheet import Chartsheet
+    from openpyxl25.chartsheet import Chartsheet
 
     return Chartsheet
 

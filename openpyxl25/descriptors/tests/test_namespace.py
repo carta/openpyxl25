@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 # copyright openpyxl 2010-2015
 
-from ..namespace import namespaced
+from openpyxl25.descriptors.namespace import namespaced
 
 
 def test_no_namespace():

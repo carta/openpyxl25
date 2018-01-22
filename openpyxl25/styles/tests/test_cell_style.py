@@ -10,7 +10,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def StyleArray():
-    from ..cell_style import StyleArray
+    from openpyxl25.styles.cell_style import StyleArray
     return StyleArray
 
 
@@ -39,7 +39,7 @@ class TestStyleArray:
 
 @pytest.fixture
 def CellStyle():
-    from ..cell_style import CellStyle
+    from openpyxl25.styles.cell_style import CellStyle
     return CellStyle
 
 
@@ -56,7 +56,7 @@ class TestCellStyle:
 
 
     def test_from_xml(self, CellStyle):
-        from ..alignment import Alignment
+        from openpyxl25.styles.alignment import Alignment
         src = """
         <xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0" applyAlignment="1">
           <alignment horizontal="center"/>
@@ -72,7 +72,7 @@ class TestCellStyle:
 
 
     def test_to_array(self, CellStyle):
-        from ..cell_style import StyleArray
+        from openpyxl25.styles.cell_style import StyleArray
         xf = CellStyle(
             numFmtId=43,
             fontId=1,
@@ -95,7 +95,7 @@ class TestCellStyle:
 
 
     def test_from_array(self, CellStyle):
-        from ..cell_style import StyleArray
+        from openpyxl25.styles.cell_style import StyleArray
         style = StyleArray([5, 10, 15, 0, 0, 0, 1, 1, 15])
         xf = CellStyle.from_array(style)
         assert dict(xf) == {'borderId': '15', 'fillId': '10', 'fontId': '5',
@@ -105,7 +105,7 @@ class TestCellStyle:
 
 @pytest.fixture
 def CellStyleList():
-    from ..cell_style import CellStyleList
+    from openpyxl25.styles.cell_style import CellStyleList
     return CellStyleList
 
 

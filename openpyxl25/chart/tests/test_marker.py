@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def Marker():
-    from ..marker import Marker
+    from openpyxl25.chart.marker import Marker
     return Marker
 
 
@@ -46,7 +46,7 @@ class TestMarker:
 
 @pytest.fixture
 def DataPoint():
-    from ..marker import DataPoint
+    from openpyxl25.chart.marker import DataPoint
     return DataPoint
 
 

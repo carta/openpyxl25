@@ -12,7 +12,7 @@ def test_dataframe():
     from pandas.util import testing
     from pandas.tslib import NaTType
 
-    from ..dataframe import dataframe_to_rows
+    from openpyxl25.utils.dataframe import dataframe_to_rows
     df = testing.makeMixedDataFrame()
     df.iloc[0] = numpy.nan
 

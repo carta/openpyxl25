@@ -13,7 +13,7 @@ def test_builtin_format():
 
 def test_number_descriptor():
     from openpyxl25.descriptors import Strict
-    from ..numbers import NumberFormatDescriptor
+    from openpyxl25.styles.numbers import NumberFormatDescriptor
 
     class Dummy(Strict):
 
@@ -34,7 +34,7 @@ def test_number_descriptor():
                          ]
                          )
 def test_is_date_format(format, result):
-    from ..numbers import is_date_format
+    from openpyxl25.styles.numbers import is_date_format
     assert is_date_format(format) is result
 
 
@@ -47,6 +47,6 @@ def test_is_date_format(format, result):
                          ]
                          )
 def test_datetime_regex(fmt, result):
-    from ..numbers import BAD_DATE_RE
+    from openpyxl25.styles.numbers import BAD_DATE_RE
     match = BAD_DATE_RE.search(fmt.lower()) is not None
     assert match is result

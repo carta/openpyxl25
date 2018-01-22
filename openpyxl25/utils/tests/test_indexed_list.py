@@ -3,7 +3,7 @@ import pytest
 
 @pytest.fixture
 def list():
-    from ..indexed_list import IndexedList
+    from openpyxl25.utils.indexed_list import IndexedList
     return IndexedList
 
 

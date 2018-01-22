@@ -9,7 +9,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def ChartsheetProperties():
-    from ..properties import ChartsheetProperties
+    from openpyxl25.chartsheet.properties import ChartsheetProperties
 
     return ChartsheetProperties
 

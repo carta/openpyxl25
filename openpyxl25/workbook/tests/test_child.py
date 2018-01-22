@@ -13,7 +13,7 @@ class DummyWorkbook:
 
 @pytest.fixture
 def WorkbookChild():
-    from .. child import _WorkbookChild
+    from openpyxl25.workbook.child import _WorkbookChild
     return _WorkbookChild
 
 
@@ -31,7 +31,7 @@ s = r'[\\*?:/\[\]]'
                          ]
                          )
 def test_invalid_chars(value):
-    from ..child import INVALID_TITLE_REGEX
+    from openpyxl25.workbook.child import INVALID_TITLE_REGEX
     assert INVALID_TITLE_REGEX.search(value)
 
 
@@ -47,7 +47,7 @@ def test_invalid_chars(value):
                          ]
                          )
 def test_duplicate_title(names, value, result):
-    from ..child import avoid_duplicate_name
+    from openpyxl25.workbook.child import avoid_duplicate_name
     title = avoid_duplicate_name(names, value)
     assert title == result
 

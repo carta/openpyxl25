@@ -9,7 +9,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def BarChart():
-    from ..bar_chart import BarChart
+    from openpyxl25.chart.bar_chart import BarChart
     return BarChart
 
 
@@ -93,7 +93,7 @@ class TestBarChart:
 
 
     def test_series(self, BarChart):
-        from .. import Series
+        from openpyxl25.chart import Series
         s1 = Series(values="Sheet1!$A$1:$A$10")
         s2 = Series(values="Sheet1!$B$1:$B$10")
         bc = BarChart(ser=[s1, s2])
@@ -141,7 +141,7 @@ class TestBarChart:
 
 @pytest.fixture
 def BarChart3D():
-    from ..bar_chart import BarChart3D
+    from openpyxl25.chart.bar_chart import BarChart3D
     return BarChart3D
 
 

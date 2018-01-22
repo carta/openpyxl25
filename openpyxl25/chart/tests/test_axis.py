@@ -9,7 +9,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def Scaling():
-    from ..axis import Scaling
+    from openpyxl25.chart.axis import Scaling
     return Scaling
 
 
@@ -28,7 +28,7 @@ def test_scaling(Scaling):
 
 @pytest.fixture
 def _BaseAxis():
-    from ..axis import _BaseAxis
+    from openpyxl25.chart.axis import _BaseAxis
     return _BaseAxis
 
 
@@ -54,7 +54,7 @@ class TestAxis:
 
 @pytest.fixture
 def TextAxis():
-    from ..axis import TextAxis
+    from openpyxl25.chart.axis import TextAxis
     return TextAxis
 
 
@@ -108,7 +108,7 @@ class TestTextAxis:
 
 @pytest.fixture
 def NumericAxis():
-    from ..axis import NumericAxis
+    from openpyxl25.chart.axis import NumericAxis
     return NumericAxis
 
 
@@ -160,7 +160,7 @@ class TestValAx:
 
 @pytest.fixture
 def DateAxis():
-    from ..axis import DateAxis
+    from openpyxl25.chart.axis import DateAxis
     return DateAxis
 
 
@@ -217,7 +217,7 @@ class TestDateAx:
 
 @pytest.fixture
 def SeriesAxis():
-    from ..axis import SeriesAxis
+    from openpyxl25.chart.axis import SeriesAxis
     return SeriesAxis
 
 
@@ -258,7 +258,7 @@ class TestSeriesAxis:
 
 @pytest.fixture
 def DisplayUnitsLabel():
-    from ..axis import DisplayUnitsLabel
+    from openpyxl25.chart.axis import DisplayUnitsLabel
     return DisplayUnitsLabel
 
 
@@ -285,7 +285,7 @@ class TestDispUnitsLabel:
 
 @pytest.fixture
 def DisplayUnitsLabelList():
-    from ..axis import DisplayUnitsLabelList
+    from openpyxl25.chart.axis import DisplayUnitsLabelList
     return DisplayUnitsLabelList
 
 
@@ -312,7 +312,7 @@ class TestDisplayUnitList:
 
 @pytest.fixture
 def ChartLines():
-    from ..axis import ChartLines
+    from openpyxl25.chart.axis import ChartLines
     return ChartLines
 
 

@@ -1,6 +1,6 @@
 import pytest
 
-from .. import units
+from openpyxl25.utils import units
 
 
 @pytest.mark.parametrize("value, expected",

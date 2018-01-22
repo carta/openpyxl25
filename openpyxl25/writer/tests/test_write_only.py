@@ -34,7 +34,7 @@ class DummyWorkbook:
 
 @pytest.fixture
 def WriteOnlyWorksheet():
-    from ..write_only import WriteOnlyWorksheet
+    from openpyxl25.writer.write_only import WriteOnlyWorksheet
     return WriteOnlyWorksheet(DummyWorkbook(), title="TestWorksheet")
 
 
@@ -156,7 +156,7 @@ def test_invalid_append(WriteOnlyWorksheet, row):
 def test_cell_comment(WriteOnlyWorksheet):
     ws = WriteOnlyWorksheet
     from openpyxl25.comments import Comment
-    from .. write_only import WriteOnlyCell
+    from openpyxl25.writer.write_only import WriteOnlyCell
     cell = WriteOnlyCell(ws, 1)
     comment = Comment('hello', 'me')
     cell.comment = comment
@@ -193,7 +193,7 @@ def test_cell_comment(WriteOnlyWorksheet):
 
 
 def test_cannot_save_twice(WriteOnlyWorksheet):
-    from .. write_only import WorkbookAlreadySaved
+    from openpyxl25.writer.write_only import WorkbookAlreadySaved
 
     ws = WriteOnlyWorksheet
     ws.close()
@@ -326,7 +326,7 @@ def test_save():
     from tempfile import NamedTemporaryFile
     filename = NamedTemporaryFile(delete=False)
     from openpyxl25.workbook import Workbook
-    from ..write_only import save_dump
+    from openpyxl25.writer.write_only import save_dump
     wb = Workbook(write_only=True)
     save_dump(wb, filename)
 

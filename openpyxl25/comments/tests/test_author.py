@@ -7,7 +7,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def AuthorList():
-    from ..author import AuthorList
+    from openpyxl25.comments.author import AuthorList
     return AuthorList
 
 

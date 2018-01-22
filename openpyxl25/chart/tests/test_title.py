@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def Title():
-    from ..title import Title
+    from openpyxl25.chart.title import Title
     return Title
 
 
@@ -47,7 +47,7 @@ def test_title_maker():
     Create a title element from a string preserving line breaks.
     """
 
-    from ..title import title_maker
+    from openpyxl25.chart.title import title_maker
     text = "Two-line\nText"
     title = title_maker(text)
     xml = tostring(title.to_tree())

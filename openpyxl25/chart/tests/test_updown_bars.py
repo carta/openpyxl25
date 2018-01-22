@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def UpDownBars():
-    from ..updown_bars import UpDownBars
+    from openpyxl25.chart.updown_bars import UpDownBars
     return UpDownBars
 
 

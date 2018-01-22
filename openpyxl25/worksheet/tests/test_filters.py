@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def FilterColumn():
-    from .. filters import FilterColumn
+    from openpyxl25.worksheet.filters import FilterColumn
     return FilterColumn
 
 
@@ -43,7 +43,7 @@ class TestFilterColumn:
 
 @pytest.fixture
 def SortCondition():
-    from .. filters import SortCondition
+    from openpyxl25.worksheet.filters import SortCondition
     return SortCondition
 
 
@@ -69,7 +69,7 @@ class TestSortCondition:
 
 @pytest.fixture
 def AutoFilter():
-    from .. filters import AutoFilter
+    from openpyxl25.worksheet.filters import AutoFilter
     return AutoFilter
 
 
@@ -134,7 +134,7 @@ class TestAutoFilter:
 
 @pytest.fixture
 def SortState():
-    from ..filters import SortState
+    from openpyxl25.worksheet.filters import SortState
     return SortState
 
 
@@ -168,7 +168,7 @@ class TestSortState:
 
 @pytest.fixture
 def IconFilter():
-    from ..filters import IconFilter
+    from openpyxl25.worksheet.filters import IconFilter
     return IconFilter
 
 
@@ -195,7 +195,7 @@ class TestIconFilter:
 
 @pytest.fixture
 def ColorFilter():
-    from ..filters import ColorFilter
+    from openpyxl25.worksheet.filters import ColorFilter
     return ColorFilter
 
 
@@ -222,7 +222,7 @@ class TestColorFilter:
 
 @pytest.fixture
 def DynamicFilter():
-    from ..filters import DynamicFilter
+    from openpyxl25.worksheet.filters import DynamicFilter
     return DynamicFilter
 
 
@@ -249,7 +249,7 @@ class TestDynamicFilter:
 
 @pytest.fixture
 def CustomFilter():
-    from ..filters import CustomFilter
+    from openpyxl25.worksheet.filters import CustomFilter
     return CustomFilter
 
 
@@ -276,7 +276,7 @@ class TestCustomFilter:
 
 @pytest.fixture
 def CustomFilters():
-    from ..filters import CustomFilters
+    from openpyxl25.worksheet.filters import CustomFilters
     return CustomFilters
 
 
@@ -303,7 +303,7 @@ class TestCustomFilters:
 
 @pytest.fixture
 def Top10():
-    from ..filters import Top10
+    from openpyxl25.worksheet.filters import Top10
     return Top10
 
 
@@ -330,7 +330,7 @@ class TestTop10:
 
 @pytest.fixture
 def DateGroupItem():
-    from ..filters import DateGroupItem
+    from openpyxl25.worksheet.filters import DateGroupItem
     return DateGroupItem
 
 
@@ -357,7 +357,7 @@ class TestDateGroupItem:
 
 @pytest.fixture
 def Filters():
-    from ..filters import Filters
+    from openpyxl25.worksheet.filters import Filters
     return Filters
 
 

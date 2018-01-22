@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def FunctionGroup():
-    from ..function_group import FunctionGroup
+    from openpyxl25.workbook.function_group import FunctionGroup
     return FunctionGroup
 
 
@@ -35,7 +35,7 @@ class TestFunctionGroup:
 
 @pytest.fixture
 def FunctionGroupList():
-    from ..function_group import FunctionGroupList
+    from openpyxl25.workbook.function_group import FunctionGroupList
     return FunctionGroupList
 
 

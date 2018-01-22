@@ -9,7 +9,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def Paragraph():
-    from ..text import Paragraph
+    from openpyxl25.drawing.text import Paragraph
     return Paragraph
 
 
@@ -38,7 +38,7 @@ class TestParagraph:
 
 @pytest.fixture
 def ParagraphProperties():
-    from ..text import ParagraphProperties
+    from openpyxl25.drawing.text import ParagraphProperties
     return ParagraphProperties
 
 
@@ -63,7 +63,7 @@ class TestParagraphProperties:
         assert text == ParagraphProperties()
 
 
-from ..spreadsheet_drawing import SpreadsheetDrawing
+from openpyxl25.drawing.spreadsheet_drawing import SpreadsheetDrawing
 
 
 class TestTextBox:
@@ -84,7 +84,7 @@ class TestTextBox:
 
 @pytest.fixture
 def CharacterProperties():
-    from ..text import CharacterProperties
+    from openpyxl25.drawing.text import CharacterProperties
     return CharacterProperties
 
 

@@ -21,7 +21,7 @@ import pytest
 
 @pytest.fixture
 def load_workbook():
-    from ..excel import load_workbook
+    from openpyxl25.reader.excel import load_workbook
     return load_workbook
 
 
@@ -42,7 +42,7 @@ def test_load_workbook_from_fileobj(datadir, load_workbook):
 
 
 def test_repair_central_directory():
-    from ..excel import repair_central_directory, CENTRAL_DIRECTORY_SIGNATURE
+    from openpyxl25.reader.excel import repair_central_directory, CENTRAL_DIRECTORY_SIGNATURE
 
     data_a = b"foobarbaz" + CENTRAL_DIRECTORY_SIGNATURE
     data_b = b"bazbarfoo1234567890123456890"
@@ -61,7 +61,7 @@ def test_repair_central_directory():
                for name in ['/' + ARC_WORKBOOK, '/xl/spqr.xml']
 ])
 def test_find_standard_workbook_part(datadir, wb_type, wb_name):
-    from ..excel import _find_workbook_part
+    from openpyxl25.reader.excel import _find_workbook_part
 
     src = """
         <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
@@ -76,14 +76,14 @@ def test_find_standard_workbook_part(datadir, wb_type, wb_name):
 
 
 def test_no_workbook():
-    from ..excel import _find_workbook_part
+    from openpyxl25.reader.excel import _find_workbook_part
 
     with pytest.raises(IOError):
         part = _find_workbook_part(Manifest())
 
 
 def test_overwritten_default():
-    from ..excel import _find_workbook_part
+    from openpyxl25.reader.excel import _find_workbook_part
 
     src = """
     <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">

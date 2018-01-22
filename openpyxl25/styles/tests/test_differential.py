@@ -13,7 +13,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def DifferentialStyle():
-    from ..differential import DifferentialStyle
+    from openpyxl25.styles.differential import DifferentialStyle
     return DifferentialStyle
 
 

@@ -20,7 +20,7 @@ from openpyxl25.xml.constants import (
 
 @pytest.fixture
 def FileExtension():
-    from ..manifest import FileExtension
+    from openpyxl25.packaging.manifest import FileExtension
     return FileExtension
 
 
@@ -50,7 +50,7 @@ class TestFileExtension:
 
 @pytest.fixture
 def Override():
-    from ..manifest import Override
+    from openpyxl25.packaging.manifest import Override
     return Override
 
 
@@ -85,7 +85,7 @@ class TestOverride:
 
 @pytest.fixture
 def Manifest():
-    from ..manifest import Manifest
+    from openpyxl25.packaging.manifest import Manifest
     return Manifest
 
 

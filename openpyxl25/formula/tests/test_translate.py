@@ -4,17 +4,17 @@ import pytest
 
 @pytest.fixture
 def Translator():
-    from .. import translate
+    from openpyxl25.formula import translate
     return translate.Translator
 
 @pytest.fixture
 def Tokenizer():
-    from .. import tokenizer
+    from openpyxl25.formula import tokenizer
     return tokenizer.Tokenizer
 
 @pytest.fixture
 def TranslatorError():
-    from .. import translate
+    from openpyxl25.formula import translate
     return translate.TranslatorError
 
 class TestTranslator(object):

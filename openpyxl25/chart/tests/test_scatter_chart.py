@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def ScatterChart():
-    from ..scatter_chart import ScatterChart
+    from openpyxl25.chart.scatter_chart import ScatterChart
     return ScatterChart
 
 

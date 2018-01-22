@@ -5,11 +5,11 @@ import pytest
 from openpyxl25.xml.functions import fromstring, tostring
 from openpyxl25.tests.helper import compare_xml
 from openpyxl25 import Workbook
-from ..comment_sheet import CommentRecord
+from openpyxl25.comments.comment_sheet import CommentRecord
 
 
 def _comment_list():
-    from ..comments import Comment
+    from openpyxl25.comments import Comment
     wb = Workbook()
     ws = wb.active
     comment1 = Comment("text", "author")
@@ -60,7 +60,7 @@ class TestCommentSheet:
 
 
     def test_read_comments(self, datadir):
-        from ..comment_sheet import CommentSheet
+        from openpyxl25.comments.comment_sheet import CommentSheet
 
         datadir.chdir()
         with open("comments1.xml") as src:
@@ -72,7 +72,7 @@ class TestCommentSheet:
 
 
     def test_from_comments(self, datadir):
-        from .. comment_sheet import CommentSheet
+        from openpyxl25.comments.comment_sheet import CommentSheet
         datadir.chdir()
         comments = _comment_list()
         cs = CommentSheet.from_comments(comments)
@@ -86,8 +86,8 @@ class TestCommentSheet:
 
 
     def test_path(self):
-        from ..comment_sheet import CommentSheet
-        from ..author import AuthorList
+        from openpyxl25.comments.comment_sheet import CommentSheet
+        from openpyxl25.comments.author import AuthorList
         cs = CommentSheet(authors=AuthorList(), commentList=())
         assert cs.path == '/xl/comments/commentNone.xml'
 

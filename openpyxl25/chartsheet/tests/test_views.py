@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def ChartsheetView():
-    from ..views import ChartsheetView
+    from openpyxl25.chartsheet.views import ChartsheetView
 
     return ChartsheetView
 
@@ -32,7 +32,7 @@ class TestChartsheetView:
 
 @pytest.fixture
 def ChartsheetViewList():
-    from ..views import ChartsheetViewList
+    from openpyxl25.chartsheet.views import ChartsheetViewList
     return ChartsheetViewList
 
 
@@ -51,7 +51,7 @@ class TestChartsheetViewList:
 
 
     def test_write(self, ChartsheetViewList):
-        from ..views import ChartsheetView
+        from openpyxl25.chartsheet.views import ChartsheetView
 
         views = ChartsheetViewList()
 

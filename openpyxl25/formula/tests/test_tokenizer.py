@@ -4,7 +4,7 @@ import pytest
 
 @pytest.fixture
 def tokenizer():
-    from .. import tokenizer
+    from openpyxl25.formula import tokenizer
     return tokenizer
 
 # Constants from tokenizer.Token:

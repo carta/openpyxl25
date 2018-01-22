@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def PatternFillProperties():
-    from ..fill import PatternFillProperties
+    from openpyxl25.drawing.fill import PatternFillProperties
     return PatternFillProperties
 
 
@@ -34,7 +34,7 @@ class TestPatternFillProperties:
 
 @pytest.fixture
 def RelativeRect():
-    from ..fill import RelativeRect
+    from openpyxl25.drawing.fill import RelativeRect
     return RelativeRect
 
 
@@ -61,7 +61,7 @@ class TestRelativeRect:
 
 @pytest.fixture
 def StretchInfoProperties():
-    from ..fill import StretchInfoProperties
+    from openpyxl25.drawing.fill import StretchInfoProperties
     return StretchInfoProperties
 
 
@@ -90,7 +90,7 @@ class TestStretchInfoProperties:
 
 @pytest.fixture
 def GradientStop():
-    from ..fill import GradientStop
+    from openpyxl25.drawing.fill import GradientStop
     return GradientStop
 
 
@@ -117,7 +117,7 @@ class TestGradientStop:
 
 @pytest.fixture
 def GradientStopList():
-    from ..fill import GradientStopList
+    from openpyxl25.drawing.fill import GradientStopList
     return GradientStopList
 
 
@@ -150,7 +150,7 @@ class TestGradientStopList:
 
 @pytest.fixture
 def GradientFillProperties():
-    from ..fill import GradientFillProperties
+    from openpyxl25.drawing.fill import GradientFillProperties
     return GradientFillProperties
 
 
@@ -177,7 +177,7 @@ class TestGradientFillProperties:
 
 @pytest.fixture
 def Blip():
-    from ..fill import Blip
+    from openpyxl25.drawing.fill import Blip
     return Blip
 
 
@@ -205,7 +205,7 @@ class TestBlip:
 
 @pytest.fixture
 def BlipFillProperties():
-    from ..fill import BlipFillProperties
+    from openpyxl25.drawing.fill import BlipFillProperties
     return BlipFillProperties
 
 

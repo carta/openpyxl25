@@ -7,7 +7,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def Hyperlink():
-    from ..hyperlink import Hyperlink
+    from openpyxl25.worksheet.hyperlink import Hyperlink
     return Hyperlink
 
 
@@ -36,7 +36,7 @@ class TestHyperlink:
 
 @pytest.fixture
 def HyperlinkList():
-    from ..hyperlink import HyperlinkList
+    from openpyxl25.worksheet.hyperlink import HyperlinkList
     return HyperlinkList
 
 

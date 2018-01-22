@@ -5,12 +5,12 @@ import pytest
 from openpyxl25.xml.functions import fromstring, tostring
 from openpyxl25.tests.helper import compare_xml
 
-from ..cell_style import StyleArray
+from openpyxl25.styles.cell_style import StyleArray
 
 
 @pytest.fixture
 def Stylesheet():
-    from ..stylesheet import Stylesheet
+    from openpyxl25.styles.stylesheet import Stylesheet
     return Stylesheet
 
 
@@ -122,7 +122,7 @@ class TestStylesheet:
         assert len(styles) == 3
         assert styles[2] == StyleArray([0,0,0,0,0,2,0,0,0])
 
-        from ..alignment import Alignment
+        from openpyxl25.styles.alignment import Alignment
 
         assert stylesheet.alignments == [
             Alignment(),
@@ -232,7 +232,7 @@ class TestStylesheet:
 
 
 def test_no_styles():
-    from ..stylesheet import apply_stylesheet
+    from openpyxl25.styles.stylesheet import apply_stylesheet
     from zipfile import ZipFile
     from io import BytesIO
     from openpyxl25.workbook import Workbook
@@ -247,7 +247,7 @@ def test_no_styles():
 def test_write_worksheet(Stylesheet):
     from openpyxl25 import Workbook
     wb = Workbook()
-    from ..stylesheet import write_stylesheet
+    from openpyxl25.styles.stylesheet import write_stylesheet
     node = write_stylesheet(wb)
     xml = tostring(node)
     expected = """
@@ -298,9 +298,9 @@ def test_write_worksheet(Stylesheet):
 def test_simple_styles(datadir):
     import datetime
     from openpyxl25 import Workbook
-    from ..protection import Protection
-    from .. import numbers
-    from ..stylesheet import write_stylesheet
+    from openpyxl25.styles.protection import Protection
+    from openpyxl25.styles import numbers
+    from openpyxl25.styles.stylesheet import write_stylesheet
     wb = Workbook()
     wb.guess_types = True
     ws = wb.active

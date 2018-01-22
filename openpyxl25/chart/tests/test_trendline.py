@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def TrendlineLabel():
-    from ..trendline import TrendlineLabel
+    from openpyxl25.chart.trendline import TrendlineLabel
     return TrendlineLabel
 
 
@@ -35,7 +35,7 @@ class TestTrendlineLabel:
 
 @pytest.fixture
 def Trendline():
-    from ..trendline import Trendline
+    from openpyxl25.chart.trendline import Trendline
     return Trendline
 
 

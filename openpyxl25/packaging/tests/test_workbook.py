@@ -24,7 +24,7 @@ from openpyxl25.xml.constants import (
 
 @pytest.fixture
 def WorkbookParser():
-    from .. workbook import WorkbookParser
+    from openpyxl25.packaging.workbook import WorkbookParser
     return WorkbookParser
 
 

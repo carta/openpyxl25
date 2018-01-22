@@ -154,5 +154,5 @@ def test_equality():
                          ]
                          )
 def test_number_convesion(value, expected):
-    from .. read_only import _cast_number
+    from openpyxl25.cell.read_only import _cast_number
     assert _cast_number(value) == expected

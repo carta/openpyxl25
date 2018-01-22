@@ -6,7 +6,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def Serialisable():
-    from ..serialisable import Serialisable
+    from openpyxl25.descriptors.serialisable import Serialisable
     return Serialisable
 
 
@@ -64,7 +64,7 @@ value='hello'"""
 
 @pytest.fixture
 def Relation(Serialisable):
-    from ..excel import Relation
+    from openpyxl25.descriptors.excel import Relation
 
     class Dummy(Serialisable):
 
@@ -111,7 +111,7 @@ class TestRelation:
 
 @pytest.fixture
 def KeywordAttribute(Serialisable):
-    from ..base import Bool
+    from openpyxl25.descriptors.base import Bool
 
     class SomeElement(Serialisable):
 
@@ -149,7 +149,7 @@ class TestKeywordAttribute:
 @pytest.fixture
 def Node(Serialisable):
 
-    from ..base import Bool
+    from openpyxl25.descriptors.base import Bool
 
     class SomeNode(Serialisable):
 
@@ -165,7 +165,7 @@ def Node(Serialisable):
 @pytest.fixture
 def KeywordNode(Serialisable, Node):
 
-    from ..base import Typed
+    from openpyxl25.descriptors.base import Typed
 
     class SomeElement(Serialisable):
 

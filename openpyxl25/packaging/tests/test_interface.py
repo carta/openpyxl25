@@ -4,7 +4,7 @@ from __future__ import absolute_import
 import pytest
 
 def test_interface():
-    from ..interface import ISerialisableFile
+    from openpyxl25.packaging.interface import ISerialisableFile
 
     class DummyFile(ISerialisableFile):
 

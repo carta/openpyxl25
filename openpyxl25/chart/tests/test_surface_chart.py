@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def SurfaceChart():
-    from ..surface_chart import SurfaceChart
+    from openpyxl25.chart.surface_chart import SurfaceChart
     return SurfaceChart
 
 
@@ -53,7 +53,7 @@ class TestSurfaceChart:
 
 @pytest.fixture
 def SurfaceChart3D():
-    from ..surface_chart import SurfaceChart3D
+    from openpyxl25.chart.surface_chart import SurfaceChart3D
     return SurfaceChart3D
 
 
@@ -109,7 +109,7 @@ class TestSurfaceChart3D:
 
 @pytest.fixture
 def BandFormat():
-    from ..surface_chart import BandFormat
+    from openpyxl25.chart.surface_chart import BandFormat
     return BandFormat
 
 
@@ -140,7 +140,7 @@ class TestBandFormat:
 
 @pytest.fixture
 def BandFormatList():
-    from ..surface_chart import BandFormatList
+    from openpyxl25.chart.surface_chart import BandFormatList
     return BandFormatList
 
 

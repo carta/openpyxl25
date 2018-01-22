@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def Legend():
-    from ..legend import Legend
+    from openpyxl25.chart.legend import Legend
     return Legend
 
 
@@ -39,7 +39,7 @@ class TestLegend:
 
 @pytest.fixture
 def LegendEntry():
-    from ..legend import LegendEntry
+    from openpyxl25.chart.legend import LegendEntry
     return LegendEntry
 
 

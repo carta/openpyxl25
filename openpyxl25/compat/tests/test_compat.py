@@ -22,7 +22,7 @@ def test_safe_string(value, result):
 
 @pytest.mark.numpy_required
 def test_numeric_types():
-    from ..numbers import NUMERIC_TYPES, numpy, Decimal, long
+    from openpyxl25.compat.numbers import NUMERIC_TYPES, numpy, Decimal, long
     assert NUMERIC_TYPES == (int, float, long, Decimal, numpy.bool_,
                              numpy.floating, numpy.integer)
 
@@ -30,7 +30,7 @@ def test_numeric_types():
 @pytest.mark.numpy_required
 def test_numpy_tostring():
     from numpy import float_, int_, bool_
-    from .. import safe_string
+    from openpyxl25.compat.strings import safe_string
     assert safe_string(float_(5.1)) == "5.1"
     assert safe_string(int(5)) == "5"
     assert safe_string(bool_(True)) == "1"
@@ -38,12 +38,12 @@ def test_numpy_tostring():
 
 @pytest.mark.skipif("sys.version_info[0]>=3")
 def test_safe_repr():
-    from ..strings import safe_repr
+    from openpyxl25.compat.strings import safe_repr
     s = u"D\xfcsseldorf"
     assert safe_repr(s) == s.encode("ascii", "backslashreplace")
 
 
-from .. import deprecated
+from openpyxl25.compat import deprecated
 
 def test_deprecated_function(recwarn):
 

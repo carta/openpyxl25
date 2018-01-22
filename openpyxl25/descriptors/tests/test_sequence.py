@@ -4,12 +4,12 @@ import pytest
 
 from openpyxl25.xml.functions import fromstring, tostring, Element
 from openpyxl25.tests.helper import compare_xml
-from ..serialisable import Serialisable
-from ..base import Integer
+from openpyxl25.descriptors.serialisable import Serialisable
+from openpyxl25.descriptors.base import Integer
 
 @pytest.fixture
 def Sequence():
-    from ..sequence import Sequence
+    from openpyxl25.descriptors.sequence import Sequence
 
     return Sequence
 
@@ -136,7 +136,7 @@ class TestComplex:
 
 @pytest.fixture
 def ValueSequence():
-    from .. sequence import ValueSequence
+    from openpyxl25.descriptors.sequence import ValueSequence
     return ValueSequence
 
 
@@ -192,7 +192,7 @@ class TestValueSequence:
 
 @pytest.fixture
 def NestedSequence():
-    from ..sequence import NestedSequence
+    from openpyxl25.descriptors.sequence import NestedSequence
     return NestedSequence
 
 

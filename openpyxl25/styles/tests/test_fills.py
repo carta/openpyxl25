@@ -93,7 +93,7 @@ class TestGradientFill:
 
 @pytest.fixture
 def PatternFill():
-    from ..fills import PatternFill
+    from openpyxl25.styles.fills import PatternFill
     return PatternFill
 
 
@@ -174,7 +174,7 @@ class TestPatternFill:
 
 
 def test_create_empty_fill():
-    from ..fills import Fill
+    from openpyxl25.styles.fills import Fill
 
     src = fromstring("<fill/>")
     assert Fill.from_tree(src) is None

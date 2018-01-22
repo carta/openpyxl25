@@ -10,7 +10,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def CustomChartsheetView():
-    from ..custom import CustomChartsheetView
+    from openpyxl25.chartsheet.custom import CustomChartsheetView
 
     return CustomChartsheetView
 
@@ -50,7 +50,7 @@ class TestCustomChartsheetView:
 
 @pytest.fixture
 def CustomChartsheetViews():
-    from ..custom import CustomChartsheetViews
+    from openpyxl25.chartsheet.custom import CustomChartsheetViews
 
     return CustomChartsheetViews
 
@@ -73,7 +73,7 @@ class TestCustomChartsheetViews:
         assert customChartsheetViews.customSheetView[0].pageMargins.left == 0.23622047244094491
 
     def test_write(self, CustomChartsheetViews):
-        from ..custom import CustomChartsheetView
+        from openpyxl25.chartsheet.custom import CustomChartsheetView
 
         pageMargins = PageMargins(left=0.2362204724409449, right=0.2362204724409449, top=0.7480314960629921,
                                   bottom=0.7480314960629921, header=0.3149606299212598, footer=0.3149606299212598)

@@ -7,7 +7,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def TableStyle():
-    from ..table import TableStyle
+    from openpyxl25.styles.table import TableStyle
     return TableStyle
 
 
@@ -34,7 +34,7 @@ class TestTableStyle:
 
 @pytest.fixture
 def TableStyleList():
-    from ..table import TableStyleList
+    from openpyxl25.styles.table import TableStyleList
     return TableStyleList
 
 
@@ -61,7 +61,7 @@ class TestTableStyleList:
 
 @pytest.fixture
 def TableStyleElement():
-    from ..table import TableStyleElement
+    from openpyxl25.styles.table import TableStyleElement
     return TableStyleElement
 
 

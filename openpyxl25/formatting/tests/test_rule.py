@@ -14,7 +14,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def FormatObject():
-    from ..rule import FormatObject
+    from openpyxl25.formatting.rule import FormatObject
     return FormatObject
 
 
@@ -60,13 +60,13 @@ class TestFormatObject:
 
 @pytest.fixture
 def ColorScale():
-    from ..rule import ColorScale
+    from openpyxl25.formatting.rule import ColorScale
     return ColorScale
 
 
 @pytest.fixture
 def ColorScaleRule():
-    from ..rule import ColorScaleRule
+    from openpyxl25.formatting.rule import ColorScaleRule
     return ColorScaleRule
 
 
@@ -155,7 +155,7 @@ class TestColorScale:
 
 @pytest.fixture
 def DataBar():
-    from ..rule import DataBar
+    from openpyxl25.formatting.rule import DataBar
     return DataBar
 
 
@@ -193,7 +193,7 @@ class TestDataBar:
 
 @pytest.fixture
 def IconSet():
-    from ..rule import IconSet
+    from openpyxl25.formatting.rule import IconSet
     return IconSet
 
 
@@ -236,7 +236,7 @@ class TestIconSet:
 
 @pytest.fixture
 def Rule():
-    from ..rule import Rule
+    from openpyxl25.formatting.rule import Rule
     return Rule
 
 
@@ -288,7 +288,7 @@ class TestRule:
 
 
 def test_formula_rule():
-    from ..rule import FormulaRule
+    from openpyxl25.formatting.rule import FormulaRule
     from openpyxl25.styles.differential import DifferentialStyle
 
     cf = FormulaRule(formula=['ISBLANK(C1)'], stopIfTrue=True)
@@ -298,7 +298,7 @@ def test_formula_rule():
 
 
 def test_cellis_rule():
-    from ..rule import CellIsRule
+    from openpyxl25.formatting.rule import CellIsRule
     from openpyxl25.styles import PatternFill
 
     red_fill = PatternFill(start_color='FFEE1111', end_color='FFEE1111',
@@ -322,7 +322,7 @@ def test_cellis_rule():
                          ]
                          )
 def test_operator_expansion(value, expansion):
-    from ..rule import CellIsRule
+    from openpyxl25.formatting.rule import CellIsRule
     cf1 = CellIsRule(operator=value, formula=[])
     cf2 = CellIsRule(operator=expansion, formula=[])
     assert cf1.operator == expansion
@@ -330,7 +330,7 @@ def test_operator_expansion(value, expansion):
 
 
 def test_iconset_rule():
-    from ..rule import IconSetRule
+    from openpyxl25.formatting.rule import IconSetRule
     rule = IconSetRule('5Arrows', 'percent', [10, 20, 30, 40, 50])
     xml = tostring(rule.to_tree())
     expected = """
@@ -349,7 +349,7 @@ def test_iconset_rule():
 
 
 def test_databar_rule():
-    from ..rule import DataBarRule
+    from openpyxl25.formatting.rule import DataBarRule
     rule = DataBarRule(start_type='percentile', start_value=10,
                        end_type='percentile', end_value='90', color="FF638EC6")
     xml = tostring(rule.to_tree())

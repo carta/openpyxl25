@@ -5,7 +5,7 @@ import pytest
 
 
 def test_bounding_box():
-    from ..image import bounding_box
+    from openpyxl25.drawing.image import bounding_box
     w, h = bounding_box(80, 80, 90, 100)
     assert w == 72
     assert h == 80
@@ -13,7 +13,7 @@ def test_bounding_box():
 
 @pytest.fixture
 def Image():
-    from ..image import Image
+    from openpyxl25.drawing.image import Image
     return Image
 
 
@@ -40,7 +40,7 @@ class TestImage:
 
     @pytest.mark.pil_not_installed
     def test_import(self, Image, datadir):
-        from ..image import _import_image
+        from openpyxl25.drawing.image import _import_image
         datadir.chdir()
         with pytest.raises(ImportError):
             _import_image("plain.png")

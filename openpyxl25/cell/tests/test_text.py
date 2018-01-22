@@ -9,7 +9,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def InlineFont():
-    from ..text import InlineFont
+    from openpyxl25.cell.text import InlineFont
     return InlineFont
 
 
@@ -36,7 +36,7 @@ class TestInlineFont:
 
 @pytest.fixture
 def RichText():
-    from ..text import RichText
+    from openpyxl25.cell.text import RichText
     return RichText
 
 
@@ -63,7 +63,7 @@ class TestRichText:
 
 @pytest.fixture
 def Text():
-    from ..text import Text
+    from openpyxl25.cell.text import Text
     return Text
 
 
@@ -128,7 +128,7 @@ class TestText:
 
 @pytest.fixture
 def PhoneticText():
-    from ..text import PhoneticText
+    from openpyxl25.cell.text import PhoneticText
     return PhoneticText
 
 
@@ -159,7 +159,7 @@ class TestPhoneticText:
 
 @pytest.fixture
 def PhoneticProperties():
-    from ..text import PhoneticProperties
+    from openpyxl25.cell.text import PhoneticProperties
     return PhoneticProperties
 
 

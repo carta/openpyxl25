@@ -5,13 +5,13 @@ import pytest
 
 from openpyxl25.xml.functions import fromstring, tostring
 from openpyxl25.tests.helper import compare_xml
-from ..chartspace import PlotArea
+from openpyxl25.chart.chartspace import PlotArea
 
-from ..series import Series
+from openpyxl25.chart.series import Series
 
 @pytest.fixture
 def ChartBase():
-    from .._chart import ChartBase
+    from openpyxl25.chart._chart import ChartBase
     return ChartBase
 
 
@@ -38,7 +38,7 @@ class TestChartBase:
 
 
     def test_set_catgories(self, ChartBase):
-        from ..series import Series
+        from openpyxl25.chart.series import Series
         s1 = Series()
         s1.__elements__ = ('cat',)
         chart = ChartBase()

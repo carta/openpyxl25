@@ -9,7 +9,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def DataValidation():
-    from ..datavalidation import DataValidation
+    from openpyxl25.worksheet.datavalidation import DataValidation
     return DataValidation
 
 
@@ -123,7 +123,7 @@ class TestDataValidation:
 
 @pytest.fixture
 def DataValidationList():
-    from ..datavalidation import DataValidationList
+    from openpyxl25.worksheet.datavalidation import DataValidationList
     return DataValidationList
 
 
@@ -168,11 +168,11 @@ COLLAPSE_TEST_DATA = [
 @pytest.mark.parametrize("cells, expected",
                          COLLAPSE_TEST_DATA)
 def test_collapse_cell_addresses(cells, expected):
-    from .. datavalidation import collapse_cell_addresses
+    from openpyxl25.worksheet.datavalidation import collapse_cell_addresses
     assert collapse_cell_addresses(cells) == expected
 
 
 def test_expand_cell_ranges():
-    from .. datavalidation import expand_cell_ranges
+    from openpyxl25.worksheet.datavalidation import expand_cell_ranges
     rs = "A1:A3 B1:B3"
     assert expand_cell_ranges(rs) == set(["A1", "A2", "A3", "B1", "B2", "B3"])

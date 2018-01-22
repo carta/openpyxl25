@@ -6,7 +6,7 @@ except ImportError:
     ParseError = SyntaxError
 
 def test_safe_iterator_none():
-    from .. functions import safe_iterator
+    from openpyxl25.xml.functions import safe_iterator
     seq = safe_iterator(None)
     assert seq == []
 
@@ -18,15 +18,15 @@ def test_safe_iterator_none():
                          ]
                          )
 def test_localtag(xml, tag):
-    from .. functions import localname
-    from .. functions import fromstring
+    from openpyxl25.xml.functions import localname
+    from openpyxl25.xml.functions import fromstring
     node = fromstring(xml)
     assert localname(node) == tag
 
 
 @pytest.mark.lxml_required
 def test_dont_resolve():
-    from ..functions import fromstring
+    from openpyxl25.writer.functions import fromstring
     s = b"""<?xml version="1.0" encoding="ISO-8859-1"?>
             <!DOCTYPE foo [
             <!ELEMENT foo ANY >
@@ -37,7 +37,7 @@ def test_dont_resolve():
 
 @pytest.mark.no_lxml
 def test_dont_resolve():
-    from ..functions import fromstring
+    from openpyxl25.writer.functions import fromstring
     s = b"""<?xml version="1.0" encoding="ISO-8859-1"?>
             <!DOCTYPE foo [
             <!ELEMENT foo ANY >

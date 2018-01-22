@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def ColorChoice():
-    from ..colors import ColorChoice
+    from openpyxl25.drawing.colors import ColorChoice
     return ColorChoice
 
 
@@ -38,7 +38,7 @@ class TestColorChoice:
 
 @pytest.fixture
 def SystemColor():
-    from ..colors import SystemColor
+    from openpyxl25.drawing.colors import SystemColor
     return SystemColor
 
 
@@ -65,7 +65,7 @@ class TestSystemColor:
 
 @pytest.fixture
 def HSLColor():
-    from ..colors import HSLColor
+    from openpyxl25.drawing.colors import HSLColor
     return HSLColor
 
 
@@ -92,7 +92,7 @@ class TestHSLColor:
 
 @pytest.fixture
 def RGBPercent():
-    from ..colors import RGBPercent
+    from openpyxl25.drawing.colors import RGBPercent
     return RGBPercent
 
 
@@ -119,7 +119,7 @@ class TestRGBPercent:
 
 @pytest.fixture
 def ColorMapping():
-    from ..colors import ColorMapping
+    from openpyxl25.drawing.colors import ColorMapping
     return ColorMapping
 
 

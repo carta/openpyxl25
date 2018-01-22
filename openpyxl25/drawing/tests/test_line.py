@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def LineProperties():
-    from ..line import LineProperties
+    from openpyxl25.drawing.line import LineProperties
     return LineProperties
 
 
@@ -55,7 +55,7 @@ class TestLineProperties:
 
 @pytest.fixture
 def LineEndProperties():
-    from ..line import LineEndProperties
+    from openpyxl25.drawing.line import LineEndProperties
     return LineEndProperties
 
 
@@ -82,7 +82,7 @@ class TestLineEndProperties:
 
 @pytest.fixture
 def DashStop():
-    from ..line import DashStop
+    from openpyxl25.drawing.line import DashStop
     return DashStop
 
 
@@ -109,7 +109,7 @@ class TestDashStop:
 
 @pytest.fixture
 def LineJoinMiterProperties():
-    from ..line import LineJoinMiterProperties
+    from openpyxl25.drawing.line import LineJoinMiterProperties
     return LineJoinMiterProperties
 
 

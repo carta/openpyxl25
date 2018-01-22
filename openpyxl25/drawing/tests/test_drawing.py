@@ -11,7 +11,7 @@ from openpyxl25.tests.helper import compare_xml
 class TestDrawing(object):
 
     def setup(self):
-        from ..drawing import Drawing
+        from openpyxl25.drawing.drawing import Drawing
         self.drawing = Drawing()
 
     def test_ctor(self):

@@ -28,7 +28,7 @@ def dummy_object():
 
 @pytest.fixture
 def proxy(dummy_object):
-    from .. proxy import StyleProxy
+    from openpyxl25.styles.proxy import StyleProxy
     return StyleProxy(dummy_object)
 
 
@@ -56,7 +56,7 @@ def test_copy(proxy):
 
 
 def test_add(dummy_object):
-    from ..proxy import StyleProxy
+    from openpyxl25.styles.proxy import StyleProxy
 
     o1 = dummy_object
     o2 = copy(dummy_object)

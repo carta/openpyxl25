@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 
 def test_ctor():
-    from .. properties import WorksheetProperties, Outline
+    from openpyxl25.worksheet.properties import WorksheetProperties, Outline
     color_test = 'F0F0F0'
     outline_pr = Outline(summaryBelow=True, summaryRight=True)
     wsprops = WorksheetProperties(tabColor=color_test, outlinePr=outline_pr)
@@ -19,7 +19,7 @@ def test_ctor():
 
 @pytest.fixture
 def SimpleTestProps():
-    from .. properties import WorksheetProperties
+    from openpyxl25.worksheet.properties import WorksheetProperties
     wsp = WorksheetProperties()
     wsp.filterMode = False
     wsp.tabColor = 'FF123456'
@@ -41,7 +41,7 @@ def test_write_properties(SimpleTestProps):
 
 
 def test_parse_properties(datadir, SimpleTestProps):
-    from .. properties import WorksheetProperties
+    from openpyxl25.worksheet.properties import WorksheetProperties
     datadir.chdir()
 
     with open("sheetPr2.xml") as src:

@@ -9,7 +9,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def RichText():
-    from ..text import RichText
+    from openpyxl25.chart.text import RichText
     return RichText
 
 

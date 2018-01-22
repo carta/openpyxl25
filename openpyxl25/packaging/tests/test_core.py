@@ -11,7 +11,7 @@ from openpyxl25.xml.functions import fromstring, tostring
 
 @pytest.fixture()
 def SampleProperties():
-    from .. core import DocumentProperties
+    from openpyxl25.packaging.core import DocumentProperties
     props = DocumentProperties()
     props.keywords = "one, two, three"
     props.created = datetime.datetime(2010, 4, 1, 20, 30, 00)
@@ -71,7 +71,7 @@ def test_from_tree(datadir, SampleProperties):
 
 
 def test_qualified_datetime():
-    from ..core import QualifiedDateTime
+    from openpyxl25.packaging.core import QualifiedDateTime
     dt = QualifiedDateTime()
     tree = dt.to_tree("time", datetime.datetime(2015, 7, 20, 12, 30))
     xml = tostring(tree)

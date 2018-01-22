@@ -13,7 +13,7 @@ from openpyxl25.utils.exceptions import InvalidFileException
 
 @pytest.fixture
 def ExcelWriter():
-    from ..excel import ExcelWriter
+    from openpyxl25.writer.excel import ExcelWriter
     return ExcelWriter
 
 

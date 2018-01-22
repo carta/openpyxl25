@@ -3,11 +3,11 @@ from __future__ import absolute_import
 
 import pytest
 
-from .. import Strict
+from openpyxl25.descriptors import Strict
 
 class TestDescriptor:
 
-    from ..base import Descriptor
+    from openpyxl25.descriptors.base import Descriptor
 
     class Dummy:
         pass
@@ -27,7 +27,7 @@ class TestDescriptor:
 @pytest.fixture
 def boolean():
 
-    from ..base import Bool
+    from openpyxl25.descriptors.base import Bool
 
     class Dummy(Strict):
 
@@ -60,7 +60,7 @@ class TestBool:
 
 
 def test_nested():
-    from ..base import Bool
+    from openpyxl25.descriptors.base import Bool
 
     class DummyNested(Strict):
 
@@ -74,7 +74,7 @@ def test_nested():
 @pytest.fixture
 def integer():
 
-    from ..base import Integer
+    from openpyxl25.descriptors.base import Integer
 
     class Dummy(Strict):
 
@@ -107,7 +107,7 @@ class TestInt:
 @pytest.fixture
 def float():
 
-    from ..base import Float
+    from openpyxl25.descriptors.base import Float
 
     class Dummy(Strict):
 
@@ -141,7 +141,7 @@ class TestFloat:
 @pytest.fixture
 def allow_none():
 
-    from ..base import Float
+    from openpyxl25.descriptors.base import Float
 
     class Dummy(Strict):
 
@@ -159,7 +159,7 @@ class TestAllowNone:
 
 @pytest.fixture
 def maximum():
-    from ..base import Max
+    from openpyxl25.descriptors.base import Max
 
     class Dummy(Strict):
 
@@ -171,7 +171,7 @@ def maximum():
 class TestMax:
 
     def test_ctor(self):
-        from ..base import Max
+        from openpyxl25.descriptors.base import Max
 
         with pytest.raises(TypeError):
             class Dummy(Strict):
@@ -188,7 +188,7 @@ class TestMax:
 
 @pytest.fixture
 def minimum():
-    from ..base import Min
+    from openpyxl25.descriptors.base import Min
 
     class Dummy(Strict):
 
@@ -200,7 +200,7 @@ def minimum():
 class TestMin:
 
     def test_ctor(self):
-        from ..base import Min
+        from openpyxl25.descriptors.base import Min
 
         with pytest.raises(TypeError):
             class Dummy(Strict):
@@ -219,7 +219,7 @@ class TestMin:
 
 @pytest.fixture
 def min_max():
-    from ..base import MinMax
+    from openpyxl25.descriptors.base import MinMax
 
     class Dummy(Strict):
 
@@ -231,7 +231,7 @@ def min_max():
 class TestMinMax:
 
     def test_ctor(self):
-        from ..base import MinMax
+        from openpyxl25.descriptors.base import MinMax
 
         with pytest.raises(TypeError):
 
@@ -256,7 +256,7 @@ class TestMinMax:
 
 @pytest.fixture
 def set():
-    from ..base import Set
+    from openpyxl25.descriptors.base import Set
 
     class Dummy(Strict):
 
@@ -268,7 +268,7 @@ def set():
 class TestValues:
 
     def test_ctor(self):
-        from ..base import Set
+        from openpyxl25.descriptors.base import Set
 
         with pytest.raises(TypeError):
             class Dummy(Strict):
@@ -287,7 +287,7 @@ class TestValues:
 
 
 def test_noneset():
-    from ..base import NoneSet
+    from openpyxl25.descriptors.base import NoneSet
     class Dummy(Strict):
 
         value = NoneSet(values=[1, 2, 3])
@@ -302,7 +302,7 @@ def test_noneset():
 @pytest.fixture
 def ascii():
 
-    from ..base import ASCII
+    from openpyxl25.descriptors.base import ASCII
 
     class Dummy(Strict):
 
@@ -333,7 +333,7 @@ class TestASCII:
 @pytest.fixture
 def string():
 
-    from ..base import String
+    from openpyxl25.descriptors.base import String
 
     class Dummy(Strict):
 
@@ -356,7 +356,7 @@ class TestString:
 
 @pytest.fixture
 def Tuple():
-    from ..base import Tuple
+    from openpyxl25.descriptors.base import Tuple
 
     class Dummy(Strict):
 
@@ -378,7 +378,7 @@ class TestTuple:
 
 @pytest.fixture
 def Length():
-    from ..base import Length
+    from openpyxl25.descriptors.base import Length
 
     class Dummy(Strict):
 

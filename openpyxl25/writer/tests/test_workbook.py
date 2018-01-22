@@ -14,11 +14,11 @@ from openpyxl25 import Workbook, load_workbook
 from openpyxl25.workbook.defined_name import DefinedName
 from openpyxl25.xml.functions import Element, tostring, fromstring
 from openpyxl25.xml.constants import XLTX, XLSX, XLSM, XLTM
-from .. excel import (
+from openpyxl25.writer.excel import (
     save_workbook,
     save_virtual_workbook,
     )
-from .. workbook import (
+from openpyxl25.writer.workbook import (
     write_workbook,
     write_workbook_rels,
 )
@@ -66,7 +66,7 @@ def test_write_hidden_single_worksheet():
     wb = Workbook()
     ws = wb.active
     ws.sheet_state = "hidden"
-    from ..workbook import get_active_sheet
+    from openpyxl25.writer.workbook import get_active_sheet
     with pytest.raises(IndexError):
         get_active_sheet(wb)
 
@@ -153,7 +153,7 @@ def test_write_workbook_code_name():
 
 
 def test_write_root_rels():
-    from ..workbook import write_root_rels
+    from openpyxl25.writer.workbook import write_root_rels
 
     wb = Workbook()
     xml = write_root_rels(wb)
@@ -169,7 +169,7 @@ def test_write_root_rels():
 
 
 def test_write_workbook_protection(datadir):
-    from ...workbook.protection import WorkbookProtection
+    from openpyxl25.workbook.protection import WorkbookProtection
 
     datadir.chdir()
     wb = Workbook()

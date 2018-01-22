@@ -3,14 +3,14 @@ from __future__ import absolute_import
 
 from openpyxl25.xml.functions import tostring, fromstring
 from openpyxl25.tests.helper import compare_xml
-from ..serialisable import Serialisable
+from openpyxl25.descriptors.serialisable import Serialisable
 
 
 import pytest
 
 @pytest.fixture
 def NestedValue():
-    from ..nested import NestedValue
+    from openpyxl25.descriptors.nested import NestedValue
 
     class Simple(Serialisable):
 
@@ -85,7 +85,7 @@ class TestValue:
 @pytest.fixture
 def NestedText():
 
-    from ..nested import NestedText
+    from openpyxl25.descriptors.nested import NestedText
 
     class Simple(Serialisable):
 
@@ -148,7 +148,7 @@ class TestText:
 
 
 def test_bool_value():
-    from ..nested import NestedBool
+    from openpyxl25.descriptors.nested import NestedBool
 
     class Simple(Serialisable):
 
@@ -169,7 +169,7 @@ def test_bool_value():
 
 
 def test_noneset_value():
-    from ..nested import NestedNoneSet
+    from openpyxl25.descriptors.nested import NestedNoneSet
 
 
     class Simple(Serialisable):
@@ -190,7 +190,7 @@ def test_noneset_value():
     assert simple.underline == '1'
 
 def test_min_max_value():
-    from ..nested import NestedMinMax
+    from openpyxl25.descriptors.nested import NestedMinMax
 
 
     class Simple(Serialisable):
@@ -213,7 +213,7 @@ def test_min_max_value():
 
 
 def test_nested_integer():
-    from ..nested import NestedInteger
+    from openpyxl25.descriptors.nested import NestedInteger
 
 
     class Simple(Serialisable):
@@ -231,7 +231,7 @@ def test_nested_integer():
 
 
 def test_nested_float():
-    from ..nested import NestedFloat
+    from openpyxl25.descriptors.nested import NestedFloat
 
 
     class Simple(Serialisable):
@@ -249,7 +249,7 @@ def test_nested_float():
 
 
 def test_nested_string():
-    from ..nested import NestedString
+    from openpyxl25.descriptors.nested import NestedString
 
 
     class Simple(Serialisable):
@@ -268,7 +268,7 @@ def test_nested_string():
 
 @pytest.fixture
 def Empty():
-    from ..nested import EmptyTag
+    from openpyxl25.descriptors.nested import EmptyTag
 
     class Simple(Serialisable):
 
@@ -324,7 +324,7 @@ class TestEmptyTag:
 
 @pytest.fixture
 def CustomAttribute():
-    from ..nested import NestedValue
+    from openpyxl25.descriptors.nested import NestedValue
 
     class Simple(Serialisable):
 

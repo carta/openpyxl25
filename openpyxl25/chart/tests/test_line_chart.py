@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def LineChart():
-    from ..line_chart import LineChart
+    from openpyxl25.chart.line_chart import LineChart
     return LineChart
 
 
@@ -44,7 +44,7 @@ class TestLineChart:
 
 @pytest.fixture
 def LineChart3D():
-    from ..line_chart import LineChart3D
+    from openpyxl25.chart.line_chart import LineChart3D
     return LineChart3D
 
 

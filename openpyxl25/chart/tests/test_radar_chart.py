@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def RadarChart():
-    from ..radar_chart import RadarChart
+    from openpyxl25.chart.radar_chart import RadarChart
     return RadarChart
 
 

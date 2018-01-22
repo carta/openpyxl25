@@ -10,9 +10,9 @@ from openpyxl25.xml.functions import (
     Element,
 )
 
-from ..comments import Comment
-from ..comment_sheet import CommentRecord
-from ..shape_writer import (
+from openpyxl25.comments import Comment
+from openpyxl25.comments.comment_sheet import CommentRecord
+from openpyxl25.comments.shape_writer import (
     ShapeWriter,
     vmlns,
     excelns,
@@ -88,7 +88,7 @@ def test_write_comments_vml(datadir):
 
 
 def test_shape():
-    from ..shape_writer import _shape_factory
+    from openpyxl25.comments.shape_writer import _shape_factory
 
     shape = _shape_factory(2,3)
     xml = tostring(shape)

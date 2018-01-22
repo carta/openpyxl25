@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def ErrorBars():
-    from ..error_bar import ErrorBars
+    from openpyxl25.chart.error_bar import ErrorBars
     return ErrorBars
 
 

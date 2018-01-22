@@ -5,7 +5,7 @@ import pytest
 
 @pytest.fixture
 def Alignment():
-    from .. alignment import Alignment
+    from openpyxl25.styles.alignment import Alignment
     return Alignment
 
 

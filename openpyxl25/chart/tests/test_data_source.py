@@ -9,7 +9,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def NumRef():
-    from ..data_source import NumRef
+    from openpyxl25.chart.data_source import NumRef
     return NumRef
 
 
@@ -41,7 +41,7 @@ class TestNumRef:
 
 @pytest.fixture
 def StrRef():
-    from ..data_source import StrRef
+    from openpyxl25.chart.data_source import StrRef
     return StrRef
 
 
@@ -72,7 +72,7 @@ class TestStrRef:
 
 @pytest.fixture
 def StrVal():
-    from ..data_source import StrVal
+    from openpyxl25.chart.data_source import StrVal
     return StrVal
 
 
@@ -103,7 +103,7 @@ class TestStrVal:
 
 @pytest.fixture
 def StrData():
-    from ..data_source import StrData
+    from openpyxl25.chart.data_source import StrData
     return StrData
 
 

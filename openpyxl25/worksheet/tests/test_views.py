@@ -10,7 +10,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def SheetView():
-    from ..views import SheetView
+    from openpyxl25.worksheet.views import SheetView
     return SheetView
 
 
@@ -56,7 +56,7 @@ def test_serialise(SheetView):
 
 @pytest.fixture
 def SheetViewList():
-    from ..views import SheetViewList
+    from openpyxl25.worksheet.views import SheetViewList
     return SheetViewList
 
 

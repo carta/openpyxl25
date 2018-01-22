@@ -9,7 +9,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def GradientFillProperties():
-    from ..fill import GradientFillProperties
+    from openpyxl25.drawing.fill import GradientFillProperties
     return GradientFillProperties
 
 
@@ -36,7 +36,7 @@ class TestGradientFillProperties:
 
 @pytest.fixture
 def Transform2D():
-    from ..shapes import Transform2D
+    from openpyxl25.drawing.shapes import Transform2D
     return Transform2D
 
 

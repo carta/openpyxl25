@@ -8,7 +8,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def ManualLayout():
-    from ..layout import ManualLayout
+    from openpyxl25.chart.layout import ManualLayout
     return ManualLayout
 
 
@@ -68,7 +68,7 @@ class TestManualLayout:
 class TestLayout:
 
     def test_ctor(self):
-        from ..layout import Layout
+        from openpyxl25.chart.layout import Layout
         layout = Layout()
         xml = tostring(layout.to_tree())
         diff = compare_xml(xml, "<layout />")

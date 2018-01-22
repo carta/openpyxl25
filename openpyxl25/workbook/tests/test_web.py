@@ -6,7 +6,7 @@ from openpyxl25.tests.helper import compare_xml
 
 @pytest.fixture
 def WebPublishObject():
-    from ..web import WebPublishObject
+    from openpyxl25.workbook.web import WebPublishObject
     return WebPublishObject
 
 
@@ -41,7 +41,7 @@ class TestWebPublishObject:
 
 @pytest.fixture
 def WebPublishObjectList():
-    from ..web import WebPublishObjectList
+    from openpyxl25.workbook.web import WebPublishObjectList
     return WebPublishObjectList
 
 
@@ -68,7 +68,7 @@ class TestWebPublishObjectList:
 
 @pytest.fixture
 def WebPublishing():
-    from ..web import WebPublishing
+    from openpyxl25.workbook.web import WebPublishing
     return WebPublishing
 
 

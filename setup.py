@@ -44,7 +44,7 @@ with open(src_file) as src:
     __version__ = constants["__version__"]
 
 
-setup(name='openpyxl',
+setup(name='openpyxl25',
     packages=find_packages(),
     # metadata
     version=__version__,
@@ -61,7 +61,7 @@ setup(name='openpyxl',
         'jdcal', 'et_xmlfile',
         ],
     package_data={
-        'openpyxl': ['.constants.json']
+        'openpyxl25': ['.constants.json']
     },
     classifiers=[
                  'Development Status :: 5 - Production/Stable',

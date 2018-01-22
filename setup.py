@@ -33,7 +33,7 @@ except IOError:
 
 
 import json
-src_file = os.path.join(here, "openpyxl", ".constants.json")
+src_file = os.path.join(here, "openpyxl25", ".constants.json")
 with open(src_file) as src:
     constants = json.load(src)
     __author__ = constants['__author__']

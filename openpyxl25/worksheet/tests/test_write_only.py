@@ -34,7 +34,7 @@ class DummyWorkbook:
 
 @pytest.fixture
 def WriteOnlyWorksheet():
-    from openpyxl25.writer.write_only import WriteOnlyWorksheet
+    from openpyxl25.worksheet.write_only import WriteOnlyWorksheet
     return WriteOnlyWorksheet(DummyWorkbook(), title="TestWorksheet")
 
 
@@ -155,8 +155,8 @@ def test_invalid_append(WriteOnlyWorksheet, row):
 
 def test_cell_comment(WriteOnlyWorksheet):
     ws = WriteOnlyWorksheet
-    from openpyxl25.comments import Comment
-    from openpyxl25.writer.write_only import WriteOnlyCell
+    from openpyxl25.comments.comments import Comment
+    from openpyxl25.worksheet.write_only import WriteOnlyCell
     cell = WriteOnlyCell(ws, 1)
     comment = Comment('hello', 'me')
     cell.comment = comment
@@ -193,7 +193,7 @@ def test_cell_comment(WriteOnlyWorksheet):
 
 
 def test_cannot_save_twice(WriteOnlyWorksheet):
-    from openpyxl25.writer.write_only import WorkbookAlreadySaved
+    from openpyxl25.utils.exceptions import WorkbookAlreadySaved
 
     ws = WriteOnlyWorksheet
     ws.close()
@@ -322,17 +322,8 @@ def test_write_empty_row(WriteOnlyWorksheet):
     assert diff is None, diff
 
 
-def test_save():
-    from tempfile import NamedTemporaryFile
-    filename = NamedTemporaryFile(delete=False)
-    from openpyxl25.workbook import Workbook
-    from openpyxl25.writer.write_only import save_dump
-    wb = Workbook(write_only=True)
-    save_dump(wb, filename)
-
-
 def test_write_height(WriteOnlyWorksheet):
-    from openpyxl25.worksheet.dimensions import RowDimension
+    from openpyxl.worksheet.dimensions import RowDimension
     ws = WriteOnlyWorksheet
     ws.row_dimensions[1].height = 10
     ws.append([4])
@@ -401,7 +392,7 @@ def test_conditional_formatting(WriteOnlyWorksheet):
     from openpyxl25.formatting.rule import CellIsRule
     ws = WriteOnlyWorksheet
     rule = CellIsRule(operator='lessThan', formula=['C$1'], stopIfTrue=True)
-    ws.conditional_formatting.add("C", rule)
+    ws.conditional_formatting.add("C1:C10", rule)
     ws.close()
 
     with open(ws.filename) as src:
@@ -420,7 +411,7 @@ def test_conditional_formatting(WriteOnlyWorksheet):
     </sheetViews>
     <sheetFormatPr baseColWidth="8" defaultRowHeight="15"/>
      <sheetData />
-     <conditionalFormatting sqref="C">
+     <conditionalFormatting sqref="C1:C10">
        <cfRule operator="lessThan" priority="1" stopIfTrue="1" type="cellIs">
          <formula>C$1</formula>
        </cfRule>

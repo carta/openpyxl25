@@ -4,12 +4,16 @@ from __future__ import absolute_import
 import datetime
 
 from openpyxl25.compat import safe_string, unicode
-from openpyxl25.utils.datetime import CALENDAR_WINDOWS_1900, datetime_to_W3CDTF, W3CDTF_to_datetime
+from openpyxl25.utils.datetime import (
+    CALENDAR_WINDOWS_1900,
+    to_ISO8601,
+    from_ISO8601,
+)
 from openpyxl25.descriptors import (
     String,
     DateTime,
     Alias,
-    )
+)
 from openpyxl25.descriptors.serialisable import Serialisable
 from openpyxl25.descriptors.nested import NestedText
 from openpyxl25.xml.functions import (Element, tostring)
@@ -31,7 +35,7 @@ class NestedDateTime(DateTime, NestedText):
             tagname = "{%s}%s" % (namespace, tagname)
         el = Element(tagname)
         if value is not None:
-            el.text = datetime_to_W3CDTF(value)
+            el.text = to_ISO8601(value)
             return el
 
 

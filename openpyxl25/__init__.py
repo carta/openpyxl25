@@ -26,5 +26,5 @@ except IOError:
 from openpyxl25.compat.numbers import NUMPY, PANDAS
 from openpyxl25.xml import LXML
 
-from openpyxl25.workbook import Workbook
+from openpyxl25.workbook.workbook import Workbook
 from openpyxl25.reader.excel import load_workbook

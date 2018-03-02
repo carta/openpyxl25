@@ -16,12 +16,12 @@ from openpyxl25.xml.constants import (
 )
 from openpyxl25.xml.functions import tostring, fromstring
 
-from openpyxl25.worksheet import Worksheet
+from openpyxl25.worksheet.worksheet import Worksheet
 from openpyxl25.chartsheet import Chartsheet
 from openpyxl25.packaging.relationship import Relationship, RelationshipList
 from openpyxl25.workbook.defined_name import DefinedName
 from openpyxl25.workbook.external_reference import ExternalReference
-from openpyxl25.workbook.parser import ChildSheet, WorkbookPackage
+from openpyxl25.workbook.parser import ChildSheet, WorkbookPackage, PivotCache
 from openpyxl25.workbook.properties import CalcProperties, WorkbookProperties
 from openpyxl25.workbook.views import BookView
 from openpyxl25.utils.datetime import CALENDAR_MAC_1904
@@ -92,8 +92,8 @@ def write_workbook(workbook):
 
     # book views
     active = get_active_sheet(wb)
-    view = BookView(activeTab=active)
-    root.bookViews =[view]
+    wb.views[0].activeTab = active
+    root.bookViews = wb.views
 
     # worksheets
     for idx, sheet in enumerate(wb._sheets, 1):
@@ -145,7 +145,19 @@ def write_workbook(workbook):
 
     root.definedNames = defined_names
 
-    root.calcPr = CalcProperties(calcId=124519, fullCalcOnLoad=True)
+    # pivots
+    pivot_caches = set()
+    for pivot in wb._pivots:
+        if pivot.cache not in pivot_caches:
+            pivot_caches.add(pivot.cache)
+            c = PivotCache(cacheId=pivot.cacheId)
+            root.pivotCaches.append(c)
+            rel = Relationship(Type=pivot.cache.rel_type, Target=pivot.cache.path)
+            wb.rels.append(rel)
+            c.id = rel.id
+    wb._pivots = [] # reset
+
+    root.calcPr = wb.calculation
 
     return tostring(root.to_tree())
 

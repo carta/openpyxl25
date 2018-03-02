@@ -1,12 +1,17 @@
 from __future__ import absolute_import
 # copyright openpyxl 2010-2015
 
+from copy import copy
 from keyword import kwlist
 KEYWORDS = frozenset(kwlist)
 
 from . import Descriptor
 from . import _Serialiasable
-from .sequence import Sequence, NestedSequence
+from .sequence import (
+    Sequence,
+    NestedSequence,
+    MultiSequencePart,
+)
 from .namespace import namespaced
 
 from openpyxl25.compat import safe_string
@@ -86,6 +91,9 @@ class Serialisable(_Serialiasable):
             elif isinstance(desc, Sequence):
                 attrib.setdefault(tag, [])
                 attrib[tag].append(obj)
+            elif isinstance(desc, MultiSequencePart):
+                attrib.setdefault(desc.store, [])
+                attrib[desc.store].append(obj)
             else:
                 attrib[tag] = obj
 
@@ -209,3 +217,15 @@ class Serialisable(_Serialiasable):
             else:
                 vals[el] = a or b
         return self.__class__(**vals)
+
+
+    def __copy__(self):
+        # serialise to xml and back to avoid shallow copies
+        xml = self.to_tree(tagname="dummy")
+        cp = self.__class__.from_tree(xml)
+        # copy any non-persisted attributed
+        for k in self.__dict__:
+            if k not in self.__attrs__ + self.__elements__:
+                v = copy(getattr(self, k))
+                setattr(cp, k, v)
+        return cp

@@ -3,7 +3,7 @@ from __future__ import absolute_import
 
 from openpyxl25.reader.excel import load_workbook
 from openpyxl25.xml.functions import fromstring
-from openpyxl25.workbook import Workbook
+from openpyxl25.workbook.workbook import Workbook
 
 from openpyxl25.comments import Comment
 
@@ -40,4 +40,4 @@ def test_comments_with_iterators(datadir):
     wb = load_workbook('comments.xlsx', read_only=True)
     ws = wb['Sheet1']
     with pytest.raises(AttributeError):
-        assert ws.cell(coordinate="A1").comment.author == "Cuke"
+        assert ws["A1"].comment.author == "Cuke"

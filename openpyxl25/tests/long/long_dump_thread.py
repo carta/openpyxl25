@@ -5,7 +5,7 @@ from __future__ import absolute_import
 import threading
 from io import BytesIO
 
-from openpyxl25.workbook import Workbook
+from openpyxl25.workbook.workbook import Workbook
 
 
 def test_thread_safe_dump():

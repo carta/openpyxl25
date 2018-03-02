@@ -57,11 +57,12 @@ class RGB(Typed):
     expected_type = basestring
 
     def __set__(self, instance, value):
-        m = aRGB_REGEX.match(value)
-        if m is None:
-            raise ValueError("Colors must be aRGB hex values")
-        if len(value) == 6:
-            value = "00" + value
+        if not self.allow_none:
+            m = aRGB_REGEX.match(value)
+            if m is None:
+                raise ValueError("Colors must be aRGB hex values")
+            if len(value) == 6:
+                value = "00" + value
         super(RGB, self).__set__(instance, value)
 
 
@@ -114,6 +115,15 @@ class Color(Serialisable):
     def index(self):
         # legacy
         return self.value
+
+
+    def __add__(self, other):
+        """
+        Adding colours is undefined behaviour best do nothing
+        """
+        if not isinstance(other, Color):
+            return super(Color, self).__add__(other)
+        return self
 
 
 class ColorDescriptor(Typed):

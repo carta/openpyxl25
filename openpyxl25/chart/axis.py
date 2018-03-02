@@ -15,7 +15,11 @@ from openpyxl25.descriptors import (
     Alias,
 )
 
-from openpyxl25.descriptors.excel import ExtensionList, Percentage
+from openpyxl25.descriptors.excel import (
+    ExtensionList,
+    Percentage,
+    _explicit_none,
+)
 from openpyxl25.descriptors.nested import (
     NestedValue,
     NestedSet,
@@ -25,12 +29,13 @@ from openpyxl25.descriptors.nested import (
     NestedInteger,
     NestedMinMax,
 )
+from openpyxl25.xml.constants import CHART_NS
 
-from .descriptors import NumberFormatDescriptor
-from .layout import Layout
-from .text import Text, RichText
-from .shapes import GraphicalProperties
-from .title import Title, TitleDescriptor
+from openpyxl25.chart.descriptors import NumberFormatDescriptor
+from openpyxl25.chart.layout import Layout
+from openpyxl25.chart.text import Text, RichText
+from openpyxl25.chart.shapes import GraphicalProperties
+from openpyxl25.chart.title import Title, TitleDescriptor
 
 
 class ChartLines(Serialisable):
@@ -80,8 +85,8 @@ class _BaseAxis(Serialisable):
     title = TitleDescriptor()
     numFmt = NumberFormatDescriptor()
     number_format = Alias("numFmt")
-    majorTickMark = NestedNoneSet(values=(['cross', 'in', 'out']))
-    minorTickMark = NestedNoneSet(values=(['cross', 'in', 'out']))
+    majorTickMark = NestedNoneSet(values=(['cross', 'in', 'out']), to_tree=_explicit_none)
+    minorTickMark = NestedNoneSet(values=(['cross', 'in', 'out']), to_tree=_explicit_none)
     tickLblPos = NestedNoneSet(values=(['high', 'low', 'nextTo']))
     spPr = Typed(expected_type=GraphicalProperties, allow_none=True)
     graphicalProperties = Alias('spPr')
@@ -94,8 +99,8 @@ class _BaseAxis(Serialisable):
     # crosses & crossesAt are mutually exclusive
 
     __elements__ = ('axId', 'scaling', 'delete', 'axPos', 'majorGridlines',
-                    'minorGridlines', 'numFmt', 'majorTickMark', 'minorTickMark',
-                    'tickLblPos', 'spPr', 'title', 'txPr', 'crossAx', 'crosses', 'crossesAt')
+                    'minorGridlines', 'title', 'numFmt', 'majorTickMark', 'minorTickMark',
+                    'tickLblPos', 'spPr', 'txPr', 'crossAx', 'crosses', 'crossesAt')
 
     def __init__(self,
                  axId=None,
@@ -118,7 +123,7 @@ class _BaseAxis(Serialisable):
         self.axId = axId
         if scaling is None:
             scaling = Scaling()
-        self.scaling = Scaling()
+        self.scaling = scaling
         self.delete = delete
         self.axPos = axPos
         self.majorGridlines = majorGridlines
@@ -234,6 +239,19 @@ class NumericAxis(_BaseAxis):
         super(NumericAxis, self).__init__(**kw)
 
 
+    @classmethod
+    def from_tree(cls, node):
+        """
+        Special case value axes with no gridlines
+        """
+        self = super(NumericAxis, cls).from_tree(node)
+        gridlines = node.find("{%s}majorGridlines" % CHART_NS)
+        if gridlines is None:
+            self.majorGridlines = None
+        return self
+
+
+
 class TextAxis(_BaseAxis):
 
     tagname = "catAx"
@@ -325,7 +343,7 @@ class DateAxis(_BaseAxis):
                  auto=None,
                  lblOffset=None,
                  baseTimeUnit=None,
-                 majorUnit=1,
+                 majorUnit=None,
                  majorTimeUnit=None,
                  minorUnit=None,
                  minorTimeUnit=None,

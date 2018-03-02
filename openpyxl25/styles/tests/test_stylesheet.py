@@ -145,19 +145,29 @@ class TestStylesheet:
 
     def test_custom_number_formats(self, Stylesheet, datadir):
         datadir.chdir()
-        import codecs
-        with codecs.open("styles_number_formats.xml", encoding="utf-8") as src:
-            xml = src.read().encode("utf8") # Python 2.6, Windows
-
+        with open("styles_number_formats.xml", "rb") as src:
+            xml = src.read()
         node = fromstring(xml)
         stylesheet = Stylesheet.from_tree(node)
 
-        assert stylesheet.number_formats == [
+        assert set(stylesheet.number_formats) == set([
             '_ * #,##0.00_ ;_ * \-#,##0.00_ ;_ * "-"??_ ;_ @_ ',
             "#,##0.00_ ",
             "yyyy/m/d;@",
             "0.00000_ "
-        ]
+        ])
+
+
+    def test_remove_duplicate_number_formats(self, Stylesheet, datadir):
+        datadir.chdir()
+
+        with open("builtins_as_custom_number_formats.xml", "rb") as src:
+            xml = src.read()
+            node = fromstring(xml)
+
+        stylesheet = Stylesheet.from_tree(node)
+
+        assert stylesheet.number_formats == ['dd\\/mm']
 
 
     def test_assign_number_formats(self, Stylesheet):
@@ -214,7 +224,7 @@ class TestStylesheet:
 
 
     def test_split_named_styles(self, Stylesheet):
-        from openpyxl25.workbook import Workbook
+        from openpyxl25.workbook.workbook import Workbook
         import copy
         wb = Workbook()
         new_style = copy.copy(wb._named_styles[0])
@@ -235,7 +245,7 @@ def test_no_styles():
     from openpyxl25.styles.stylesheet import apply_stylesheet
     from zipfile import ZipFile
     from io import BytesIO
-    from openpyxl25.workbook import Workbook
+    from openpyxl25.workbook.workbook import Workbook
     wb1 = wb2 = Workbook()
     archive = ZipFile(BytesIO(), "a")
     apply_stylesheet(archive, wb1)

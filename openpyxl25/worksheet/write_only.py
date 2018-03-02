@@ -8,22 +8,19 @@ import atexit
 from inspect import isgenerator
 import os
 from tempfile import NamedTemporaryFile
-from zipfile import ZipFile, ZIP_DEFLATED
 
-from openpyxl25.cell import Cell, WriteOnlyCell
+from openpyxl25.cell.cell import Cell, WriteOnlyCell
 from openpyxl25.drawing.spreadsheet_drawing import SpreadsheetDrawing
-from openpyxl25.worksheet import Worksheet
 from openpyxl25.workbook.child import _WorkbookChild
+from openpyxl25.worksheet.worksheet import Worksheet
 from openpyxl25.worksheet.related import Related
-from openpyxl25.worksheet.dimensions import SheetFormatProperties
 
 from openpyxl25.utils.exceptions import WorkbookAlreadySaved
 
-from .etree_worksheet import write_cell
-from .excel import ExcelWriter
-from .worksheet import write_drawing, write_conditional_formatting
+from openpyxl25.writer.etree_worksheet import write_cell
+from openpyxl25.writer.worksheet import write_drawing, write_conditional_formatting
 from openpyxl25.xml.constants import SHEET_MAIN_NS
-from openpyxl25.xml.functions import xmlfile, Element
+from openpyxl25.xml.functions import xmlfile
 
 ALL_TEMP_FILES = []
 
@@ -38,7 +35,7 @@ def _openpyxl_shutdown():
 
 def create_temporary_file(suffix=''):
     fobj = NamedTemporaryFile(mode='w+', suffix=suffix,
-                              prefix='openpyxl25.', delete=False)
+                              prefix='openpyxl.', delete=False)
     filename = fobj.name
     ALL_TEMP_FILES.append(filename)
     return filename
@@ -261,12 +258,3 @@ class WriteOnlyWorksheet(_WorkbookChild):
             out = src.read()
         self._cleanup()
         return out
-
-
-def save_dump(workbook, filename):
-    archive = ZipFile(filename, 'w', ZIP_DEFLATED, allowZip64=True)
-    if workbook.worksheets == []:
-        workbook.create_sheet()
-    writer = ExcelWriter(workbook, archive)
-    writer.save(filename)
-    return True

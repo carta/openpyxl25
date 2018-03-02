@@ -7,8 +7,8 @@ import pytest
 from openpyxl25.compat import unicode
 
 # package imports
-from openpyxl25.worksheet import Worksheet
-from openpyxl25.workbook import Workbook
+from openpyxl25.worksheet.worksheet import Worksheet
+from openpyxl25.workbook.workbook import Workbook
 from openpyxl25.styles import numbers
 from openpyxl25.reader.excel import load_workbook
 

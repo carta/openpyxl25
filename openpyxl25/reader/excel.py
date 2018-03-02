@@ -12,10 +12,11 @@ import warnings
 
 # compatibility imports
 from openpyxl25.compat import unicode, file
+from openpyxl25.pivot.table import TableDefinition
 
 # Allow blanket setting of KEEP_VBA for testing
 try:
-    from ..tests import KEEP_VBA
+    from openpyxl25.tests import KEEP_VBA
 except ImportError:
     KEEP_VBA = False
 
@@ -38,9 +39,9 @@ from openpyxl25.xml.constants import (
 )
 
 from openpyxl25.comments.comment_sheet import CommentSheet
-from openpyxl25.workbook import Workbook
+from openpyxl25.workbook.workbook import Workbook
 
-from .strings import read_string_table
+from openpyxl25.reader.strings import read_string_table
 from openpyxl25.styles.stylesheet import apply_stylesheet
 
 from openpyxl25.packaging.core import DocumentProperties
@@ -50,10 +51,12 @@ from openpyxl25.packaging.relationship import get_dependents, get_rels_path
 
 from openpyxl25.worksheet.read_only import ReadOnlyWorksheet
 from openpyxl25.worksheet.table import Table
+from openpyxl25.drawing.spreadsheet_drawing import SpreadsheetDrawing
+from openpyxl25.chart.reader import find_charts
 
 from openpyxl25.xml.functions import fromstring
 
-from .worksheet import WorkSheetParser
+from openpyxl25.reader.worksheet import WorkSheetParser
 
 # Use exc_info for Python 2 compatibility with "except Exception[,/ as] e"
 
@@ -219,6 +222,7 @@ def load_workbook(filename, read_only=False, keep_vba=KEEP_VBA,
         wb.loaded_theme = archive.read(ARC_THEME)
 
     apply_stylesheet(archive, wb) # bind styles to workbook
+    pivot_caches = parser.pivot_caches
 
     # get worksheets
     for sheet, rel in parser.find_sheets():
@@ -264,6 +268,20 @@ def load_workbook(filename, read_only=False, keep_vba=KEEP_VBA,
                     xml = fromstring(src)
                     table = Table.from_tree(xml)
                     ws.add_table(table)
+
+                drawings = rels.find(SpreadsheetDrawing._rel_type)
+                for rel in drawings:
+                    for c in find_charts(archive, rel.target):
+                        ws.add_chart(c, c.anchor)
+
+                pivot_rel = rels.find(TableDefinition.rel_type)
+                for r in pivot_rel:
+                    pivot_path = r.Target
+                    src = archive.read(pivot_path)
+                    tree = fromstring(src)
+                    pivot = TableDefinition.from_tree(tree)
+                    pivot.cache = pivot_caches[pivot.cacheId]
+                    ws.add_pivot(pivot)
 
         ws.sheet_state = sheet.state
         ws._rels = [] # reset

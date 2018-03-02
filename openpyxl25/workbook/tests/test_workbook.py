@@ -6,7 +6,7 @@ from __future__ import absolute_import
 import datetime
 
 # package imports
-from openpyxl25.workbook import Workbook
+from openpyxl25.workbook.workbook import Workbook
 from openpyxl25.reader.excel import load_workbook
 from openpyxl25.workbook.defined_name import DefinedName
 from openpyxl25.utils.exceptions import ReadOnlyWorkbookException
@@ -33,7 +33,7 @@ class TestWorkbook:
                              ]
                              )
     def test_template(self, has_vba, as_template, content_type):
-        from openpyxl25.workbook import Workbook
+        from openpyxl25.workbook.workbook import Workbook
         wb = Workbook()
         wb.vba_archive = has_vba
         wb.template = as_template
@@ -102,10 +102,23 @@ def test_getitem(Workbook, Worksheet):
         wb['NotThere']
 
 
-def test_delitem(Workbook):
+def test_get_chartsheet(Workbook):
+    wb = Workbook()
+    cs = wb.create_chartsheet()
+    assert wb[cs.title] is cs
+
+
+def test_del_worksheet(Workbook):
     wb = Workbook()
     del wb['Sheet']
     assert wb.worksheets == []
+
+
+def test_del_chartsheet(Workbook):
+    wb = Workbook()
+    cs = wb.create_chartsheet()
+    del wb[cs.title]
+    assert wb.chartsheets == []
 
 
 def test_contains(Workbook):

@@ -16,7 +16,7 @@ from openpyxl25.cell.text import Text
 from openpyxl25.xml.functions import iterparse, safe_iterator
 from openpyxl25.xml.constants import SHEET_MAIN_NS
 
-from openpyxl25.worksheet import Worksheet
+from openpyxl25.worksheet.worksheet import Worksheet
 from openpyxl25.utils import (
     column_index_from_string,
     get_column_letter,

@@ -5,7 +5,7 @@ import re
 
 from openpyxl25.compat import unicode, long
 
-from openpyxl25.cell import Cell
+from openpyxl25.cell.cell import Cell
 from openpyxl25.utils import get_column_letter
 from openpyxl25.utils.datetime import from_excel
 from openpyxl25.styles import is_date_format

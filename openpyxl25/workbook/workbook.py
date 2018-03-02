@@ -2,11 +2,10 @@ from __future__ import absolute_import
 # Copyright (c) 2010-2017 openpyxl
 
 """Workbook is the top-level container for all document information."""
-
 from openpyxl25.compat import deprecated
-from openpyxl25.compat import OrderedDict
-from openpyxl25.worksheet import Worksheet
+from openpyxl25.worksheet.worksheet import Worksheet
 from openpyxl25.worksheet.read_only import ReadOnlyWorksheet
+from openpyxl25.worksheet.write_only import WriteOnlyWorksheet
 from openpyxl25.worksheet.copier import WorksheetCopy
 
 from openpyxl25.utils import quote_sheetname
@@ -14,8 +13,7 @@ from openpyxl25.utils.indexed_list import IndexedList
 from openpyxl25.utils.datetime  import CALENDAR_WINDOWS_1900
 from openpyxl25.utils.exceptions import ReadOnlyWorkbookException
 
-from openpyxl25.writer.write_only import WriteOnlyWorksheet, save_dump
-from openpyxl25.writer.excel import save_workbook
+from openpyxl25.writer.excel import save_workbook, save_dump
 
 from openpyxl25.styles.cell_style import StyleArray
 from openpyxl25.styles.named_styles import NamedStyle
@@ -30,10 +28,13 @@ from openpyxl25.styles.named_styles import NamedStyleList
 from openpyxl25.styles.table import TableStyleList
 
 from openpyxl25.chartsheet import Chartsheet
-from .defined_name import DefinedName, DefinedNameList
+from openpyxl25.workbook.defined_name import DefinedName, DefinedNameList
 from openpyxl25.packaging.core import DocumentProperties
 from openpyxl25.packaging.relationship import RelationshipList
-from .protection import DocumentSecurity
+from openpyxl25.workbook.protection import DocumentSecurity
+from openpyxl25.workbook.properties import CalcProperties
+from openpyxl25.workbook.views import BookView
+
 
 from openpyxl25.xml.constants import (
     XLSM,
@@ -54,8 +55,10 @@ class Workbook(object):
 
     def __init__(self,
                  write_only=False,
+                 iso_dates=False,
                  ):
         self._sheets = []
+        self._pivots = []
         self._active_sheet_index = 0
         self.defined_names = DefinedNameList()
         self._external_links = []
@@ -73,11 +76,14 @@ class Workbook(object):
         self.code_name = None
         self.excel_base_date = CALENDAR_WINDOWS_1900
         self.encoding = "utf-8"
+        self.iso_dates = iso_dates
 
         if not self.write_only:
             self._sheets.append(Worksheet(self))
 
         self.rels = RelationshipList()
+        self.calculation = CalcProperties()
+        self.views = [BookView()]
 
 
     def _setup_styles(self):
@@ -129,7 +135,10 @@ class Workbook(object):
 
     @property
     def active(self):
-        """Get the currently active sheet or None"""
+        """Get the currently active sheet or None
+
+        :type: :class:`openpyxl.worksheet.worksheet.Worksheet`
+        """
         try:
             return self._sheets[self._active_sheet_index]
         except IndexError:
@@ -144,7 +153,7 @@ class Workbook(object):
         """Create a worksheet (at an optional index).
 
         :param title: optional title of the sheet
-        :type tile: unicode
+        :type title: unicode
         :param index: optional position at which the sheet will be inserted
         :type index: int
 
@@ -177,7 +186,7 @@ class Workbook(object):
 
 
     def remove(self, worksheet):
-        """Remove a worksheet from this workbook."""
+        """Remove `worksheet` from this workbook."""
         idx = self._sheets.index(worksheet)
         localnames = self.defined_names.localnames(scope=idx)
         for name in localnames:
@@ -187,7 +196,7 @@ class Workbook(object):
 
     @deprecated("Use wb.remove(worksheet) or del wb[sheetname]")
     def remove_sheet(self, worksheet):
-        """Remove a worksheet from this workbook."""
+        """Remove `worksheet` from this workbook."""
         self.remove(worksheet)
 
 
@@ -231,7 +240,7 @@ class Workbook(object):
         :type name: string
 
         """
-        for sheet in self.worksheets:
+        for sheet in self.worksheets + self.chartsheets:
             if sheet.title == key:
                 return sheet
         raise KeyError("Worksheet {0} does not exist.".format(key))
@@ -250,19 +259,27 @@ class Workbook(object):
 
     @property
     def worksheets(self):
+        """A list of sheets in this workbook
+
+        :type: list of :class:`openpyxl.worksheet.worksheet.Worksheet`
+        """
         return [s for s in self._sheets if isinstance(s, (Worksheet, ReadOnlyWorksheet, WriteOnlyWorksheet))]
 
     @property
     def chartsheets(self):
+        """A list of Chartsheets in this workbook
+
+        :type: list of :class:`openpyxl.chartsheet.chartsheet.Chartsheet`
+        """
         return [s for s in self._sheets if isinstance(s, Chartsheet)]
 
     @property
     def sheetnames(self):
-        """Returns the list of the names of worksheets in the workbook.
+        """Returns the list of the names of worksheets in this workbook.
 
         Names are returned in the worksheets order.
 
-        :rtype: list of strings
+        :type: list of strings
 
         """
         return [s.title for s in self._sheets]
@@ -359,8 +376,10 @@ class Workbook(object):
 
     def copy_worksheet(self, from_worksheet):
         """Copy an existing worksheet in the current workbook
-        :warning: This function cannot copy worksheets between workbooks.
-        worksheets can only be copied within the workbook that they belong
+
+        .. warning::
+            This function cannot copy worksheets between workbooks.
+            worksheets can only be copied within the workbook that they belong
 
         :param from_worksheet: the worksheet to be copied from
         :return: copy of the initial worksheet

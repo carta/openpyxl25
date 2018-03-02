@@ -18,7 +18,7 @@ from openpyxl25.descriptors.nested import (
     NestedInteger,
     NestedFloat,
 )
-from .colors import ColorDescriptor, Color, BLACK
+from openpyxl25.styles.colors import ColorDescriptor, Color, BLACK
 
 from openpyxl25.compat import safe_string
 from openpyxl25.xml.functions import Element, SubElement

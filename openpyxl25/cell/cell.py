@@ -106,6 +106,7 @@ class Cell(StyleableObject):
     def __init__(self, worksheet, column=None, row=None, value=None, col_idx=None, style_array=None):
         super(Cell, self).__init__(worksheet, style_array)
         self.row = row
+        """Row number of this cell (1-based)"""
         # _value is the stored value, while value is the displayed value
         self._value = None
         self._hyperlink = None
@@ -116,14 +117,17 @@ class Cell(StyleableObject):
         if column is not None:
             col_idx = column_index_from_string(column)
         self.col_idx = col_idx
+        """Column number of this cell (1-based)"""
 
 
     @property
     def coordinate(self):
+        """This cell's coordinate (ex. 'A5')"""
         return '%s%d' % (self.column, self.row)
 
     @property
     def column(self):
+        """The letter of this cell's column (ex. 'A')"""
         return get_column_letter(self.col_idx)
 
     @property
@@ -185,7 +189,8 @@ class Cell(StyleableObject):
             pass
 
         elif isinstance(value, TIME_TYPES):
-            value = self._cast_datetime(value)
+            value = self._set_time_format(value)
+            self.data_type = "d"
 
         elif isinstance(value, STRING_TYPES):
             value = self.check_string(value)
@@ -255,24 +260,24 @@ class Cell(StyleableObject):
             else:
                 pattern = "%H:%M:%S"
                 fmt = numbers.FORMAT_DATE_TIME6
-            value = datetime.datetime.strptime(value, pattern)
             self.number_format = fmt
-            return time_to_days(value)
+            value = datetime.datetime.strptime(value, pattern)
+            return value.time()
 
 
-    def _cast_datetime(self, value):
-        """Convert Python datetime to Excel and set formatting"""
+    def _set_time_format(self, value):
+        """Set number format for Python date or time"""
         if isinstance(value, datetime.datetime):
-            value = to_excel(value, self.base_date)
+            #value = to_excel(value, self.base_date)
             self.number_format = numbers.FORMAT_DATE_DATETIME
         elif isinstance(value, datetime.date):
-            value = to_excel(value, self.base_date)
+            #value = to_excel(value, self.base_date)
             self.number_format = numbers.FORMAT_DATE_YYYYMMDD2
         elif isinstance(value, datetime.time):
-            value = time_to_days(value)
+            #value = time_to_days(value)
             self.number_format = numbers.FORMAT_DATE_TIME6
         elif isinstance(value, datetime.timedelta):
-            value = timedelta_to_days(value)
+            #value = timedelta_to_days(value)
             self.number_format = numbers.FORMAT_DATE_TIMEDELTA
         return value
 
@@ -280,12 +285,12 @@ class Cell(StyleableObject):
     def value(self):
         """Get or set the value held in the cell.
 
-        :rtype: depends on the value (string, float, int or
+        :type: depends on the value (string, float, int or
             :class:`datetime.datetime`)
         """
         value = self._value
-        if value is not None and self.is_date:
-            value = from_excel(value, self.base_date)
+        #if value is not None and self.is_date:
+            #value = from_excel(value, self.base_date)
         return value
 
     @value.setter
@@ -324,13 +329,14 @@ class Cell(StyleableObject):
 
     @property
     def is_date(self):
-        """Whether the value is formatted as a date
+        """True if the value is formatted as a date
 
-        :rtype: bool
+        :type: bool
         """
-        if self.data_type == "n" and self.number_format != "General":
-            return is_date_format(self.number_format)
-        return False
+        return self.data_type == 'd' or (
+            self.data_type == 'n' and is_date_format(self.number_format)
+            )
+
 
     def offset(self, row=0, column=0):
         """Returns a cell location relative to this cell.
@@ -347,47 +353,11 @@ class Cell(StyleableObject):
         offset_row = self.row + row
         return self.parent.cell(column=offset_column, row=offset_row)
 
-    @property
-    @deprecated("Use anchor objects for positioning")
-    def anchor(self):
-        """ returns the expected position of a cell in pixels from the top-left
-            of the sheet. For example, A1 anchor should be (0,0).
-
-            :rtype: tuple(int, int)
-        """
-        left_columns = (column_index_from_string(self.column) - 1)
-        column_dimensions = self.parent.column_dimensions
-        left_anchor = 0
-        default_width = points_to_pixels(DEFAULT_COLUMN_WIDTH)
-
-        for col_idx in range(left_columns):
-            letter = get_column_letter(col_idx + 1)
-            if letter in column_dimensions:
-                cdw = column_dimensions.get(letter).width or default_width
-                if cdw > 0:
-                    left_anchor += points_to_pixels(cdw)
-                    continue
-            left_anchor += default_width
-
-        row_dimensions = self.parent.row_dimensions
-        top_anchor = 0
-        top_rows = (self.row - 1)
-        default_height = points_to_pixels(DEFAULT_ROW_HEIGHT)
-        for row_idx in range(1, top_rows + 1):
-            if row_idx in row_dimensions:
-                rdh = row_dimensions[row_idx].height or default_height
-                if rdh > 0:
-                    top_anchor += points_to_pixels(rdh)
-                    continue
-            top_anchor += default_height
-
-        return (left_anchor, top_anchor)
 
     @property
     def comment(self):
         """ Returns the comment associated with this cell
-
-            :rtype: :class:`openpyxl25.comments.Comment`
+            :type: :class:`openpyxl.comments.Comment`
         """
         return self._comment
 

@@ -4,17 +4,19 @@ from __future__ import absolute_import
 """
 Excel specific descriptors
 """
-
 from openpyxl25.xml.constants import REL_NS
-from . import (
+from openpyxl25.compat import safe_string
+from openpyxl25.xml.functions import Element
+
+from openpyxl25.descriptors.base import (
     MatchPattern,
     MinMax,
     Integer,
     String,
     Typed,
-    Sequence,
 )
-from .serialisable import Serialisable
+from openpyxl25.descriptors.sequence import Sequence
+from openpyxl25.descriptors.serialisable import Serialisable
 from openpyxl25.utils.cell import RANGE_EXPR
 
 class HexBinary(MatchPattern):
@@ -92,3 +94,12 @@ class CellRange(MatchPattern):
         if value is not None:
             value = value.upper()
         super(CellRange, self).__set__(instance, value)
+
+
+def _explicit_none(tagname, value, namespace=None):
+    """
+    Override serialisation because explicit none required
+    """
+    if namespace is not None:
+        tagname = "{%s}%s" % (namespace, tagname)
+    return Element(tagname, val=safe_string(value))

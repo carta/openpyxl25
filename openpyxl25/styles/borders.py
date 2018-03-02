@@ -12,7 +12,7 @@ from openpyxl25.descriptors import (
 )
 from openpyxl25.descriptors.serialisable import Serialisable
 
-from .colors import ColorDescriptor
+from openpyxl25.styles.colors import ColorDescriptor
 
 
 BORDER_NONE = None

@@ -17,14 +17,14 @@ from openpyxl25.descriptors import (
 )
 from openpyxl25.descriptors.excel import ExtensionList, CellRange
 from openpyxl25.descriptors.sequence import NestedSequence
-from openpyxl25.xml.constants import SHEET_MAIN_NS
+from openpyxl25.xml.constants import SHEET_MAIN_NS, REL_NS
 from openpyxl25.xml.functions import tostring
 from openpyxl25.utils import range_boundaries
 from openpyxl25.utils.escape import escape, unescape
 
-from .related import Related
+from openpyxl25.worksheet.related import Related
 
-from .filters import (
+from openpyxl25.worksheet.filters import (
     AutoFilter,
     SortState,
 )
@@ -46,7 +46,7 @@ class TableStyleInfo(Serialisable):
 
     tagname = "tableStyleInfo"
 
-    name = NoneSet(values=TABLESTYLES + PIVOTSTYLES)
+    name = String(allow_none=True)
     showFirstColumn = Bool(allow_none=True)
     showLastColumn = Bool(allow_none=True)
     showRowStripes = Bool(allow_none=True)
@@ -201,7 +201,7 @@ class Table(Serialisable):
 
     _path = "/tables/table{0}.xml"
     mime_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.table+xml"
-    _rel_type = "table"
+    _rel_type = REL_NS + "/table"
     _rel_id = None
 
     tagname = "table"

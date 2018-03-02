@@ -132,7 +132,7 @@ def test_close_read(datadir, load_workbook, ro):
 
 @pytest.mark.parametrize("wo", [False, True])
 def test_close_write(wo):
-    from openpyxl25.workbook import Workbook
+    from openpyxl25.workbook.workbook import Workbook
     wb = Workbook(write_only=wo)
     wb.close()
 

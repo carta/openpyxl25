@@ -1,8 +1,8 @@
 from __future__ import absolute_import
 # Copyright (c) 2010-2017 openpyxl
 
-from openpyxl25.compat import safe_string
-from openpyxl25.compat import OrderedDict
+from collections import OrderedDict
+from openpyxl.compat import safe_string
 
 from openpyxl25.descriptors import (
     Typed,
@@ -14,17 +14,17 @@ from openpyxl25.descriptors import (
 from openpyxl25.descriptors.excel import ExtensionList
 from openpyxl25.descriptors.serialisable import Serialisable
 
-from .fills import PatternFill, Fill
-from .fonts import Font
-from .borders import Border
-from .alignment import Alignment
-from .protection import Protection
-from .numbers import (
+from openpyxl25.styles.fills import PatternFill, Fill
+from openpyxl25.styles.fonts import Font
+from openpyxl25.styles.borders import Border
+from openpyxl25.styles.alignment import Alignment
+from openpyxl25.styles.protection import Protection
+from openpyxl25.styles.numbers import (
     NumberFormatDescriptor,
     BUILTIN_FORMATS,
     BUILTIN_FORMATS_REVERSE,
 )
-from .cell_style import (
+from openpyxl25.styles.cell_style import (
     StyleArray,
     CellStyle,
 )
@@ -46,6 +46,8 @@ class NamedStyle(Serialisable):
     hidden = Bool(allow_none=True)
     xfId = Integer(allow_none=True)
     name = String()
+    _wb = None
+    _style = StyleArray()
 
 
     def __init__(self,

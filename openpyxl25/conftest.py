@@ -12,7 +12,7 @@ def Workbook():
 @pytest.fixture
 def Worksheet():
     """Worksheet Class"""
-    from openpyxl25.worksheet import Worksheet
+    from openpyxl25.worksheet.worksheet import Worksheet
     return Worksheet
 
 

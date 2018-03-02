@@ -6,7 +6,7 @@ from copy import copy
 
 #openpyxl imports
 from openpyxl25.comments import Comment
-from openpyxl25.worksheet import Worksheet
+from openpyxl25.worksheet.worksheet import Worksheet
 
 
 class WorksheetCopy(object):
@@ -40,7 +40,7 @@ class WorksheetCopy(object):
 
         self.target.sheet_format = copy(self.source.sheet_format)
         self.target.sheet_properties = copy(self.source.sheet_properties)
-        self.target._merged_cells = copy(self.source._merged_cells)
+        self.target.merged_cells = copy(self.source.merged_cells)
 
 
     def _copy_cells(self):

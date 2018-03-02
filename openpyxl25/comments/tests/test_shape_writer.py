@@ -2,7 +2,7 @@ from __future__ import absolute_import
 # Copyright (c) 2010-2017 openpyxl
 
 
-from openpyxl25.workbook import Workbook
+from openpyxl25.workbook.workbook import Workbook
 from openpyxl25.tests.helper import compare_xml
 from openpyxl25.xml.functions import (
     fromstring,
